@@ -1,0 +1,47 @@
+table {
+    width: 100%;
+}
+
+#title-showproducts {
+    margin: 20px 0px 35px 0;
+}
+
+td.icons ul {
+    display: flex;
+    width: 45%;
+    justify-content: space-around;
+}
+
+td.icons ul .dashicons {
+    font-size: 25px;
+}
+
+td.icons ul a {
+    color: black;
+    text-decoration: none;
+}
+
+ul.pagination {
+    justify-content: center;
+}
+
+.save_edit,
+.title_field input,
+.url_field input {
+    display: none;
+}
+
+.m-fadeOut {
+    visibility: hidden!important;
+    opacity: 0!important;
+    transition: visibility 0s linear 300ms, opacity 300ms;
+}
+
+.m-fadeIn {
+    visibility: visible!important;
+    opacity: 1!important;
+    transition: visibility 0s linear 0s, opacity 300ms;
+}
+
+
+

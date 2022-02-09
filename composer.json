@@ -1,0 +1,11 @@
+{
+  "autoload": {
+    "psr-4" : {
+      "GMProductVideo\\": "src/"
+    }
+  },
+
+  "require": {
+    "friendsofphp/php-cs-fixer": "v2.19.1"
+  }
+}

@@ -1,0 +1,29 @@
+/* Add Product Video Page */
+
+input {
+    width: 100%;
+}
+
+#category_select {
+    width: 89%;
+    height: 34px;
+}
+
+#select-category-col {
+    margin-left: 23px;
+}
+
+.row{
+    margin-bottom: 23px;
+}
+
+#title-addproduct-form {
+    margin: 20px 0px 35px 0;
+}
+#submit-addproduct-form {
+    width: 200px;
+}
+
+#col-submit-form {
+    text-align: center;
+}
