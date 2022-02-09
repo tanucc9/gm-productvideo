@@ -2,19 +2,19 @@
 
 namespace GMProductVideo\Admin;
 
-defined('ABSPATH') or die('access denied.');
+defined('ABSPATH') or exit('access denied.');
 
-include(ABSPATH . 'wp-content/plugins/gm-productvideo/config/defines.php');
+include ABSPATH.'wp-content/plugins/gm-productvideo/config/defines.php';
 
 use GMProductVideo\Model\Product;
-use GMProductVideo\Model\CategoryProduct;
 
 class AdminShowProducts
 {
     public function __construct()
     {
-        add_action('admin_menu', array($this, 'admin_submenu_ShowProducts'));
+        add_action('admin_menu', [$this, 'admin_submenu_ShowProducts']);
     }
+
     public function admin_submenu_ShowProducts()
     {
         add_submenu_page(
@@ -22,8 +22,8 @@ class AdminShowProducts
             'Show Products',
             'Show Products',
             'manage_options',
-            PARENT_SLUG_ADMIN_TAB . '-pv-show-productsvideo',
-            array($this, 'admin_page_content_showProducts')
+            PARENT_SLUG_ADMIN_TAB.'-pv-show-productsvideo',
+            [$this, 'admin_page_content_showProducts']
         );
     }
 
@@ -37,11 +37,11 @@ class AdminShowProducts
             $message_alert = $_GET['message_alert'];
         }
 
-        include(GM_PV__PLUGIN_DIR . 'views/admin/admin-products-view.php');
+        include GM_PV__PLUGIN_DIR.'views/admin/admin-products-view.php';
     }
 
     public static function getProducts()
     {
-        return Product::doRetrieveAll();
+        return Product::doRetrieveAll(1);
     }
 }

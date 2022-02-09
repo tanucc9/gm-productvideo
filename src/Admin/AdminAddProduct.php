@@ -2,18 +2,18 @@
 
 namespace GMProductVideo\Admin;
 
-defined('ABSPATH') or die('access denied.');
+defined('ABSPATH') or exit('access denied.');
 
-include(ABSPATH . 'wp-content/plugins/gm-productvideo/config/defines.php');
+include ABSPATH.'wp-content/plugins/gm-productvideo/config/defines.php';
 
-use GMProductVideo\Model\Product;
 use GMProductVideo\Model\CategoryProduct;
+use GMProductVideo\Model\Product;
 
 class AdminAddProduct
 {
     public function __construct()
     {
-        add_action('admin_menu', array($this, 'admin_submenu_addProduct'));
+        add_action('admin_menu', [$this, 'admin_submenu_addProduct']);
     }
 
     public function admin_submenu_addProduct()
@@ -24,13 +24,13 @@ class AdminAddProduct
             'Add new product',
             'manage_options',
             PARENT_SLUG_ADMIN_TAB.'-pv-add-productvideo',
-            array($this, 'admin_page_content_addProduct')
+            [$this, 'admin_page_content_addProduct']
         );
     }
 
     public function admin_page_content_addProduct()
     {
-        if (isset($_POST['action']) && $_POST['action'] == "add_product") {
+        if (isset($_POST['action']) && 'add_product' == $_POST['action']) {
             $this->addProduct();
         }
 
@@ -40,7 +40,7 @@ class AdminAddProduct
             $message_alert = $_GET['message_alert'];
         }
 
-        include(GM_PV__PLUGIN_DIR.'views/admin/admin-addproduct-view.php');
+        include GM_PV__PLUGIN_DIR.'views/admin/admin-addproduct-view.php';
     }
 
     public function addProduct()
@@ -52,30 +52,30 @@ class AdminAddProduct
         $category = $_POST['category_select'];
 
         if (Product::addProduct($prodObj)) {
-            if ((int)$category != 0) {
+            if (0 != (int) $category) {
                 $catProdObj = new CategoryProduct($prodObj->id, $category);
                 if (CategoryProduct::addCategoryProduct($catProdObj)) {
-                    self::forwardResponse("success");
+                    self::forwardResponse('success');
                 }
             } else {
-                self::forwardResponse("success");
+                self::forwardResponse('success');
             }
         }
 
-        self::forwardResponse("error");
+        self::forwardResponse('error');
     }
 
     public static function forwardResponse($result)
     {
-        if ($result == "success") {
+        if ('success' == $result) {
             //parameters to send
-            $parameters = "&type_alert=alert-success&title_alert=Done!&message_alert=The new product was successfully added.";
-            $url = get_site_url() ."/wp-admin/admin.php?page=gm-prodotti-pv-show-productsvideo" . $parameters;
+            $parameters = '&type_alert=alert-success&title_alert=Done!&message_alert=The new product was successfully added.';
+            $url = get_site_url().'/wp-admin/admin.php?page=gm-prodotti-pv-show-productsvideo'.$parameters;
 
             wp_safe_redirect($url);
-        } elseif ($result == "error") {
-            $parameters = "&type_alert=alert-danger&title_alert=Error!&message_alert=There was an error. Try again to add the product.";
-            $url = get_site_url() ."/wp-admin/admin.php?page=gm-prodotti-pv-add-productvideo" . $parameters;
+        } elseif ('error' == $result) {
+            $parameters = '&type_alert=alert-danger&title_alert=Error!&message_alert=There was an error. Try again to add the product.';
+            $url = get_site_url().'/wp-admin/admin.php?page=gm-prodotti-pv-add-productvideo'.$parameters;
 
             wp_safe_redirect($url);
         }

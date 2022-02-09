@@ -1,3 +1,4 @@
 /vendor/
 /src/Logs/output_logs/
 .idea/
+composer.lock
