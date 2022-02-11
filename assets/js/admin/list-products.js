@@ -1,6 +1,4 @@
 jQuery( document ).ready(function () {
-    console.log("ready");
-    console.log(ajaxurl);
 
     //edit product
     jQuery(".action_edit").on('click', function() {

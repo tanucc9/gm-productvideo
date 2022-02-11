@@ -82,8 +82,6 @@ class Product
             $sql .= ' LIMIT ' . $limit . ' OFFSET ' . $elemToSkip;
         }
 
-        Log::doLog($sql, 'sql_pagination');
-
         $result = $wpdb->get_results($sql);
 
         if (count((array) $result) >= 1) {
@@ -100,7 +98,7 @@ class Product
         return null;
     }
 
-    public static function getNumProducts()
+    public static function getNumProducts(): int
     {
         global $wpdb;
 
@@ -113,7 +111,7 @@ class Product
         );
 
         if (!empty($result)) {
-            return $result[0]['num_products'];
+            return (int) $result[0]['num_products'];
         }
 
         return 0;
