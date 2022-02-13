@@ -69,6 +69,16 @@ class Product
         return $wpdb->update($table, $data, $where);
     }
 
+    public static function deleteProduct(int $id)
+    {
+        global $wpdb;
+
+        $table = $wpdb->prefix.self::$name_table;
+        $where = ["id_product" => $id];
+
+        return $wpdb->delete($table, $where);
+    }
+
     public static function doRetrieveAll($page, $limit = 10)
     {
         global $wpdb;

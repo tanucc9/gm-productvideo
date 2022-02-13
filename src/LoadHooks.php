@@ -2,6 +2,7 @@
 
 namespace GMProductVideo;
 
+use GMProductVideo\Controller\DeleteProductAjaxController;
 use GMProductVideo\Controller\EditProductAjaxController;
 
 class LoadHooks
@@ -13,5 +14,6 @@ class LoadHooks
         new \GMProductVideo\Admin\AdminMedia();
         new \GMProductVideo\Admin\AdminShowProducts();
         new EditProductAjaxController();
+        new DeleteProductAjaxController();
     }
 }

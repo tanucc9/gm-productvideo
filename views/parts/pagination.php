@@ -1,4 +1,4 @@
-<?php if (isset($totPages) && $totPages > 0) { ?>
+<?php if (isset($totPages) && $totPages > 1) { ?>
     <nav aria-label="Page navigation">
         <ul class="pagination">
             <li class="page-item">

@@ -1,4 +1,4 @@
-<div id="alert_component" class="alert alert-success alert-dismissible fade show" role="alert">
+<div id="alert_component" class="alert alert-dismissible fade show" role="alert">
     <strong></strong>
 </div>
 
