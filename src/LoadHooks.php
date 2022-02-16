@@ -13,6 +13,7 @@ class LoadHooks
         new \GMProductVideo\Admin\AdminAddProduct();
         new \GMProductVideo\Admin\AdminMedia();
         new \GMProductVideo\Admin\AdminShowProducts();
+        new \GMProductVideo\Admin\AdminShowCategories();
         new EditProductAjaxController();
         new DeleteProductAjaxController();
     }

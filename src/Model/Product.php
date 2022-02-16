@@ -79,12 +79,20 @@ class Product
         return $wpdb->delete($table, $where);
     }
 
-    public static function doRetrieveAll($page, $limit = 10)
-    {
+    public static function doRetrieveAll(
+        $page,
+        $limit = 10,
+        $orderBy = 'id_product',
+        $orderWay = 'asc'
+    ) {
         global $wpdb;
 
         $table = $wpdb->prefix.self::$name_table;
         $sql = 'SELECT * FROM '.$table;
+
+        if (isset($orderBy, $orderWay)) {
+            $sql .= ' ORDER BY ' . $orderBy . ' ' . $orderWay;
+        }
 
         if (isset($limit, $page)) {
             $page--;

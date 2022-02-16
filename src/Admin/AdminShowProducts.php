@@ -7,6 +7,8 @@ defined('ABSPATH') or exit('access denied.');
 include ABSPATH.'wp-content/plugins/gm-productvideo/config/defines.php';
 
 use GMProductVideo\Model\Product;
+use GMProductVideo\Utilities\AdminListProducts;
+use GMProductVideo\Utilities\CustomAdminListTable;
 
 class AdminShowProducts
 {
@@ -29,6 +31,23 @@ class AdminShowProducts
 
     public function admin_page_content_showProducts()
     {
+        // Delete product
+        if (isset($_GET['action']) && $_GET['action'] === 'delete') {
+            Product::deleteProduct((int)$_GET['id']);
+
+            $alertType = 'success';
+            $alertMessage = 'The product ' . $_GET['id'] . ' is been removed';
+        }
+
+        $myListTable = new AdminListProducts();
+        echo '<div class="wrap"><h2>My List Table Test</h2>';
+        $myListTable->prepareProducts();
+        echo '<form id="events-filter" method="get">
+    <input type="hidden" name="page" value="' .$_REQUEST['page']. '" />';
+        $myListTable->display();
+        echo '</form>';
+        echo '</div>';
+        /*
         $currentPage = isset($_GET['page_to_show']) ? (int) $_GET['page_to_show'] : 1;
         $products = self::getProducts($currentPage);
         $totPages = Product::getTotNumPages();
@@ -43,7 +62,7 @@ class AdminShowProducts
         }
         */
 
-        include GM_PV__PLUGIN_DIR.'views/admin/admin-products-view.php';
+        //include GM_PV__PLUGIN_DIR.'views/admin/admin-products-view.php';
     }
 
     public static function getProducts($page)
