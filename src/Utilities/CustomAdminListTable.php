@@ -49,17 +49,4 @@ abstract class CustomAdminListTable extends \WP_List_Table
 
         return $actions;
     }
-
-    //@todo order by with sql
-    public function usort_reorder($a, $b)
-    {
-        // If no sort, default to title
-        $orderby = (!empty($_GET['orderby'])) ? $_GET['orderby'] : 'ID';
-        // If no order, default to asc
-        $order = (! empty($_GET['order'])) ? $_GET['order'] : 'asc';
-        // Determine sort order
-        $result = strcmp($a[$orderby], $b[$orderby]);
-        // Send final sort direction to usort
-        return ($order === 'asc') ? $result : -$result;
-    }
 }
