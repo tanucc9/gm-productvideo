@@ -6,22 +6,33 @@ use GMProductVideo\Model\Product;
 
 class DeleteProductController
 {
-    public static function deleteProduct(int $idProduct = null): array
+    /** Delete an element or a group of elements
+     * @var int | array $idProduct
+     * @return array contains the info about alerts
+     */
+    public static function deleteProduct($idProduct = null): array
     {
         if (!isset($idProduct) && isset($_GET['id'])) {
-            $idProduct = (int)$_GET['id'];
+            $idProduct = $_GET['id'];
         }
 
-        if (!isset($idProduct)) {
+        if (!is_array($idProduct)) {
+            $idProduct = [$idProduct];
+        }
+
+        if (empty($idProduct)) {
             $alertType = 'danger';
             $alertMessage = 'There was an erro on removing product';
         } else {
-            if (Product::deleteProduct($idProduct) !== false) {
-                $alertType = 'success';
-                $alertMessage = 'Product ' . $idProduct . ' has been removed';
-            } else {
-                $alertType = 'danger';
-                $alertMessage = 'There was an erro on removing product ' . $idProduct;
+            $alertMessage = '';
+            foreach ($idProduct as $idProd) {
+                if (Product::deleteProduct($idProd) !== false) {
+                    $alertType = 'success';
+                    $alertMessage .= 'Product ' . $idProd . ' has been removed <br/>';
+                } else {
+                    $alertType = 'danger';
+                    $alertMessage .= 'There was an error on removing product ' . $idProd . ' <br/>';
+                }
             }
         }
 

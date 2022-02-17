@@ -34,6 +34,8 @@ class AdminShowProducts
 
     public function admin_page_content_showProducts()
     {
+        var_dump($_GET);
+
         // Send request to admin edit product to show edit page
         if (isset($_GET['action']) && $_GET['action'] === 'edit') {
             $editProductPage = new AdminEditProduct((int)$_GET['id']);
@@ -41,7 +43,10 @@ class AdminShowProducts
         } else {
 
             // Delete product
-            if (isset($_GET['action']) && $_GET['action'] === 'delete') {
+            if (
+                isset($_GET['action']) && $_GET['action'] === 'delete' ||
+                isset($_GET['action2']) && $_GET['action2'] === 'delete'
+            ) {
                 $alerts = DeleteProductController::deleteProduct();
                 $alertType = $alerts['alertType'];
                 $alertMessage = $alerts['alertMessage'];

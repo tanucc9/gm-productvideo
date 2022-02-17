@@ -34,7 +34,7 @@ abstract class CustomAdminListTable extends \WP_List_Table
     public function column_cb($item)
     {
         return sprintf(
-            '<input type="checkbox" name="book[]" value="%s" />',
+            '<input type="checkbox" name="id[]" value="%s" />',
             $item['id']
         );
     }
