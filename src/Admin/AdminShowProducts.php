@@ -55,8 +55,12 @@ class AdminShowProducts
 
             $listProductsObj = new AdminListProducts();
             $listProductsObj->prepareProducts();
-            $urlNewProd = admin_url('admin.php?page=' . AdminAddProduct::$menuSlag);
 
+            // vars admin header
+            $urlNewElem = admin_url('admin.php?page=' . AdminAddProduct::$menuSlag);
+            $textBtnNewElem = 'Add new Product';
+            $titleHeader = 'Products';
+            
             include GM_PV__PLUGIN_DIR.'views/admin/admin-products-view.php';
         }
 

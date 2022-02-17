@@ -30,6 +30,9 @@ class AdminEditProduct
             $alertMessage = 'There was an error with edit page.';
         }
 
+        // vars admin header
+        $titleHeader = isset($prod->id) ? 'Edit Product ' . $prod->id : 'Edit Product';
+
         include GM_PV__PLUGIN_DIR.'views/admin/admin-editproduct-view.php';
     }
 }

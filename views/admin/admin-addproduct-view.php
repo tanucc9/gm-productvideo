@@ -4,7 +4,10 @@ $options= ["Cl. 16", "Cl. 13", "Cl. 21", "Cl. 25", "Cl. 30"];
 
 ?>
 <div class="container">
-<h3 id="title-addproduct-form">Add New Product</h3>
+
+    <?php
+    include(GM_PV__PLUGIN_DIR . 'views/parts/admin-header.php');
+    ?>
 
 <?php /* Alert */ if(isset($type_alert))
     include(GM_PV__PLUGIN_DIR . 'views/parts/alert.php');

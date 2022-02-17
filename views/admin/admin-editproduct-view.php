@@ -1,7 +1,7 @@
 <div class="container">
-    <h3 id="title-showproducts">Edit Product <?php echo isset($prod) ? $prod->id : '' ?></h3>
 
     <?php
+    include(GM_PV__PLUGIN_DIR . 'views/parts/admin-header.php');
     include(GM_PV__PLUGIN_DIR . 'views/parts/alert.php');
     include(GM_PV__PLUGIN_DIR . 'views/parts/alert_ajax.php');
     ?>

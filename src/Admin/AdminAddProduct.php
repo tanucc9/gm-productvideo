@@ -41,6 +41,9 @@ class AdminAddProduct
             $message_alert = $_GET['message_alert'];
         }
 
+        // vars admin header
+        $titleHeader = 'Add new product';
+
         include GM_PV__PLUGIN_DIR.'views/admin/admin-addproduct-view.php';
     }
 
