@@ -1,0 +1,17 @@
+.gm_pv_admin_header {
+    display: flex;
+    padding: 20px 0px;
+}
+
+.wrap_btn_new_elem {
+    display: flex;
+    align-items: center;
+}
+
+.wrap_btn_new_elem a {
+    height: fit-content;
+}
+
+#title-header {
+    padding-right: 15px
+}

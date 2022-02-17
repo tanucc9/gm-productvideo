@@ -2,10 +2,6 @@ table {
     width: 100%;
 }
 
-#title-showproducts {
-    margin: 20px 0px 35px 0;
-}
-
 td.icons ul {
     display: flex;
     width: 45%;

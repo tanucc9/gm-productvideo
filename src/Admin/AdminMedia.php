@@ -16,6 +16,7 @@ class AdminMedia
         PARENT_SLUG_ADMIN_TAB => '/wp-content/plugins/gm-productvideo/assets/css/admin/settings.css',
         PARENT_SLUG_ADMIN_TAB.'-pv-add-productvideo' => '/wp-content/plugins/gm-productvideo/assets/css/admin/addproduct.css',
         PARENT_SLUG_ADMIN_TAB.'-pv-show-productsvideo' => '/wp-content/plugins/gm-productvideo/assets/css/admin/showproducts.css',
+
     ];
 
     /** @var string[]
@@ -57,8 +58,13 @@ class AdminMedia
      */
     public static function loadGeneralsStyles()
     {
+        //@todo load only in plugin's pages
         wp_register_style('pv_bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css');
         wp_enqueue_style('pv_bootstrap');
+
+        //@todo load only in plugin's pages
+        wp_register_style('gm_pv_adminglobal', '/wp-content/plugins/gm-productvideo/assets/css/admin/global.css');
+        wp_enqueue_style('gm_pv_adminglobal');
     }
 
     /**
