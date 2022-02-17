@@ -116,6 +116,24 @@ class Product
         return null;
     }
 
+    public static function doRetrieveById(int $idProduct)
+    {
+        global $wpdb;
+
+        $table = $wpdb->prefix.self::$name_table;
+        $sql = 'SELECT * FROM ' . $table . ' WHERE id_product = ' . $idProduct;
+        $result = $wpdb->get_results($sql);
+
+        if (count((array) $result) >= 1) {
+            foreach ($result as $row) {
+                $prod = new Product($row->id_product, $row->last_edit, $row->title_product, $row->url_video);
+                return $prod;
+            }
+        }
+
+        return null;
+    }
+
     public static function getNumProducts(): int
     {
         global $wpdb;

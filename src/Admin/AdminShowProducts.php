@@ -6,6 +6,8 @@ defined('ABSPATH') or exit('access denied.');
 
 include ABSPATH.'wp-content/plugins/gm-productvideo/config/defines.php';
 
+use GMProductVideo\Controller\DeleteProductController;
+use GMProductVideo\Controller\EditProductController;
 use GMProductVideo\Model\Product;
 use GMProductVideo\Utilities\AdminListProducts;
 use GMProductVideo\Utilities\CustomAdminListTable;
@@ -31,23 +33,30 @@ class AdminShowProducts
 
     public function admin_page_content_showProducts()
     {
-        // Delete product
-        if (isset($_GET['action']) && $_GET['action'] === 'delete') {
-            if (Product::deleteProduct((int)$_GET['id']) !== false) {
-                $alertType = 'success';
-                $alertMessage = 'Product ' . $_GET['id'] . ' has been removed';
-            } else {
-                $alertType = 'danger';
-                $alertMessage = 'There was an erro on removing product ' . $_GET['id'];
-            }
-        }
-
-        $listProductsObj = new AdminListProducts();
-        $listProductsObj->prepareProducts();
-
+        // Send request to admin edit product to show edit page
         if (isset($_GET['action']) && $_GET['action'] === 'edit') {
-            include GM_PV__PLUGIN_DIR.'views/admin/admin-editproduct-view.php';
+            $editProductPage = new AdminEditProduct((int)$_GET['id']);
+            $editProductPage->display();
         } else {
+
+            // Delete product
+            if (isset($_GET['action']) && $_GET['action'] === 'delete') {
+                $alerts = DeleteProductController::deleteProduct();
+                $alertType = $alerts['alertType'];
+                $alertMessage = $alerts['alertMessage'];
+            }
+
+            // Update the datas on db
+            if (isset($_GET['action']) && $_GET['action'] === 'submit_edit') {
+                $alerts = EditProductController::editProduct();
+                $alertType = $alerts['alertType'];
+                $alertMessage = $alerts['alertMessage'];
+            }
+
+            $listProductsObj = new AdminListProducts();
+            $listProductsObj->prepareProducts();
+            $urlNewProd = admin_url('admin.php?page=' . AdminAddProduct::$menuSlag);
+
             include GM_PV__PLUGIN_DIR.'views/admin/admin-products-view.php';
         }
 

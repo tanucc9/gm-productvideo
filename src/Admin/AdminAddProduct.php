@@ -11,6 +11,7 @@ use GMProductVideo\Model\Product;
 
 class AdminAddProduct
 {
+    public static $menuSlag = PARENT_SLUG_ADMIN_TAB.'-pv-add-productvideo';
     public function __construct()
     {
         add_action('admin_menu', [$this, 'admin_submenu_addProduct']);
@@ -23,7 +24,7 @@ class AdminAddProduct
             'Add new product',
             'Add new product',
             'manage_options',
-            PARENT_SLUG_ADMIN_TAB.'-pv-add-productvideo',
+            self::$menuSlag,
             [$this, 'admin_page_content_addProduct']
         );
     }
@@ -69,12 +70,12 @@ class AdminAddProduct
     {
         if ('success' == $result) {
             //parameters to send
-            $parameters = '&type_alert=alert-success&title_alert=Done!&message_alert=The new product was successfully added.';
+            $parameters = '&type_alert=success&message_alert=The new product was successfully added.';
             $url = get_site_url().'/wp-admin/admin.php?page=gm-prodotti-pv-show-productsvideo'.$parameters;
 
             wp_safe_redirect($url);
         } elseif ('error' == $result) {
-            $parameters = '&type_alert=alert-danger&title_alert=Error!&message_alert=There was an error. Try again to add the product.';
+            $parameters = '&type_alert=danger&message_alert=There was an error. Try again to add the product.';
             $url = get_site_url().'/wp-admin/admin.php?page=gm-prodotti-pv-add-productvideo'.$parameters;
 
             wp_safe_redirect($url);
