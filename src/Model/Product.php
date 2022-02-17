@@ -52,10 +52,8 @@ class Product
         ];
 
         if ($wpdb->insert($table, $data)) {
-            return true;
+            return $wpdb->insert_id;
         }
-
-        Log::doLog($wpdb->last_error);
 
         return false;
     }

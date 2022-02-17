@@ -53,6 +53,12 @@ class AdminShowProducts
                 $alertMessage = $alerts['alertMessage'];
             }
 
+            //Check if there are some alerts in get params
+            if (isset($_GET['type_alert'])) {
+                $alertType = $_GET['type_alert'];
+                $alertMessage = $_GET['message_alert'];
+            }
+
             $listProductsObj = new AdminListProducts();
             $listProductsObj->prepareProducts();
 
@@ -60,7 +66,7 @@ class AdminShowProducts
             $urlNewElem = admin_url('admin.php?page=' . AdminAddProduct::$menuSlag);
             $textBtnNewElem = 'Add new Product';
             $titleHeader = 'Products';
-            
+
             include GM_PV__PLUGIN_DIR.'views/admin/admin-products-view.php';
         }
 
@@ -70,13 +76,6 @@ class AdminShowProducts
         $totPages = Product::getTotNumPages();
         $isLastPage = $currentPage === $totPages;
         $isFirstPage = $currentPage === 1;
-
-        /*
-        if (isset($_GET['type_alert'])) {
-            $type_alert = $_GET['type_alert'];
-            $title_alert = $_GET['title_alert'];
-            $message_alert = $_GET['message_alert'];
-        }
         */
 
         //include GM_PV__PLUGIN_DIR.'views/admin/admin-products-view.php';

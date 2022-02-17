@@ -7,11 +7,8 @@ $options= ["Cl. 16", "Cl. 13", "Cl. 21", "Cl. 25", "Cl. 30"];
 
     <?php
     include(GM_PV__PLUGIN_DIR . 'views/parts/admin-header.php');
-    ?>
-
-<?php /* Alert */ if(isset($type_alert))
     include(GM_PV__PLUGIN_DIR . 'views/parts/alert.php');
-?>
+    ?>
 
 <div class="wrapper-addproduct-form">
     <form action="<?php echo admin_url('admin.php?page=' . PARENT_SLUG_ADMIN_TAB . '-pv-add-productvideo', 'https'); ?>" method="post">
@@ -23,7 +20,7 @@ $options= ["Cl. 16", "Cl. 13", "Cl. 21", "Cl. 25", "Cl. 30"];
                 <select name="category_select" id="category_select">
                     <option value="0">Choose category</option>
                     <?php foreach ($options as $key => $option) { ?>
-                        <option value="<?php echo $key ?>"><?php echo $option ?></option>
+                        <option value="<?php echo $key + 1 ?>"><?php echo $option ?></option>
                     <?php } ?>
                 </select>
             </div>

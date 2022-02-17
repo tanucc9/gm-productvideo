@@ -12,6 +12,7 @@ use GMProductVideo\Model\Product;
 class AdminAddProduct
 {
     public static $menuSlag = PARENT_SLUG_ADMIN_TAB.'-pv-add-productvideo';
+
     public function __construct()
     {
         add_action('admin_menu', [$this, 'admin_submenu_addProduct']);
@@ -36,9 +37,8 @@ class AdminAddProduct
         }
 
         if (isset($_GET['type_alert'])) {
-            $type_alert = $_GET['type_alert'];
-            $title_alert = $_GET['title_alert'];
-            $message_alert = $_GET['message_alert'];
+            $alertType = $_GET['type_alert'];
+            $alertMessage = $_GET['message_alert'];
         }
 
         // vars admin header
@@ -55,8 +55,9 @@ class AdminAddProduct
         $prodObj->url_video = $_POST['url_video'];
         $category = $_POST['category_select'];
 
-        if (Product::addProduct($prodObj)) {
+        if (($idProd = Product::addProduct($prodObj)) !== false) {
             if (0 != (int) $category) {
+                $prodObj->id = (int)$idProd;
                 $catProdObj = new CategoryProduct($prodObj->id, $category);
                 if (CategoryProduct::addCategoryProduct($catProdObj)) {
                     self::forwardResponse('success');
@@ -77,11 +78,13 @@ class AdminAddProduct
             $url = get_site_url().'/wp-admin/admin.php?page=gm-prodotti-pv-show-productsvideo'.$parameters;
 
             wp_safe_redirect($url);
+            exit();
         } elseif ('error' == $result) {
             $parameters = '&type_alert=danger&message_alert=There was an error. Try again to add the product.';
             $url = get_site_url().'/wp-admin/admin.php?page=gm-prodotti-pv-add-productvideo'.$parameters;
 
             wp_safe_redirect($url);
+            exit();
         }
     }
 }
