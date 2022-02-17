@@ -66,7 +66,8 @@ class AdminShowProducts
             }
 
             $listProductsObj = new AdminListProducts();
-            $listProductsObj->prepareProducts();
+            $currPagePagination = $_GET['paged'] ?? 1;
+            $listProductsObj->prepareProducts($currPagePagination);
 
             // vars admin header
             $urlNewElem = admin_url('admin.php?page=' . AdminAddProduct::$menuSlag);

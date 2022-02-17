@@ -13,6 +13,15 @@ class AdminListProducts extends CustomAdminListTable
     protected $orderBy = 'id_product';
     protected $orderWay = 'asc';
 
+    public function prepare_items()
+    {
+        parent::prepare_items();
+        $this->set_pagination_args([
+            'total_items' => Product::getNumProducts(),
+            'per_page'    => 10,
+        ]);
+    }
+
     protected function setSortElements()
     {
         if (isset($_GET['orderby'])) {
@@ -24,12 +33,12 @@ class AdminListProducts extends CustomAdminListTable
         }
     }
 
-    public function prepareProducts(): bool
+    public function prepareProducts(int $page = 1): bool
     {
         $this->setSortElements();
 
         $products = Product::doRetrieveAll(
-            1,
+            $page,
             10,
             $this->orderBy,
             $this->orderWay
