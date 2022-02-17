@@ -1,11 +1,9 @@
-<div id="alert_component" class="alert alert-dismissible fade show" role="alert">
-    <strong></strong>
+<?php if (isset($alertType, $alertMessage)) { ?>
+<div
+        id="alert_component"
+        class="alert alert-<?php echo $alertType ?> alert-dismissible fade show"
+        role="alert"
+>
+    <?php echo $alertMessage ?>
 </div>
-
-<style>
-    #alert_component {
-        display: none;
-        visibility: hidden;
-        opacity: 0;
-    }
-</style>
+<?php } ?>

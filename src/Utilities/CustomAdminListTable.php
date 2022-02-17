@@ -14,8 +14,6 @@ abstract class CustomAdminListTable extends \WP_List_Table
         $hidden = array();
         $sortable = $this->get_sortable_columns();
         $this->_column_headers = array($columns, $hidden, $sortable);
-        //usort($this->example_data, array(&$this, 'usort_reorder'));
-        //$this->items = $this->example_data;
     }
 
     public function column_default($item, $column_name)

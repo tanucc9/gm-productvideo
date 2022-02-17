@@ -33,20 +33,24 @@ class AdminShowProducts
     {
         // Delete product
         if (isset($_GET['action']) && $_GET['action'] === 'delete') {
-            Product::deleteProduct((int)$_GET['id']);
-
-            $alertType = 'success';
-            $alertMessage = 'The product ' . $_GET['id'] . ' is been removed';
+            if (Product::deleteProduct((int)$_GET['id']) !== false) {
+                $alertType = 'success';
+                $alertMessage = 'Product ' . $_GET['id'] . ' has been removed';
+            } else {
+                $alertType = 'danger';
+                $alertMessage = 'There was an erro on removing product ' . $_GET['id'];
+            }
         }
 
-        $myListTable = new AdminListProducts();
-        echo '<div class="wrap"><h2>My List Table Test</h2>';
-        $myListTable->prepareProducts();
-        echo '<form id="events-filter" method="get">
-    <input type="hidden" name="page" value="' .$_REQUEST['page']. '" />';
-        $myListTable->display();
-        echo '</form>';
-        echo '</div>';
+        $listProductsObj = new AdminListProducts();
+        $listProductsObj->prepareProducts();
+
+        if (isset($_GET['action']) && $_GET['action'] === 'edit') {
+            include GM_PV__PLUGIN_DIR.'views/admin/admin-editproduct-view.php';
+        } else {
+            include GM_PV__PLUGIN_DIR.'views/admin/admin-products-view.php';
+        }
+
         /*
         $currentPage = isset($_GET['page_to_show']) ? (int) $_GET['page_to_show'] : 1;
         $products = self::getProducts($currentPage);
@@ -63,10 +67,5 @@ class AdminShowProducts
         */
 
         //include GM_PV__PLUGIN_DIR.'views/admin/admin-products-view.php';
-    }
-
-    public static function getProducts($page)
-    {
-        return Product::doRetrieveAll($page);
     }
 }
