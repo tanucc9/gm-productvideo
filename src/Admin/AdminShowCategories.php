@@ -10,6 +10,8 @@ use GMProductVideo\Utilities\CustomAdminListTable;
 
 class AdminShowCategories
 {
+    public static $menuSlag = PARENT_SLUG_ADMIN_TAB.'-pv-show-categoriesvideo';
+
     public function __construct()
     {
         add_action('admin_menu', [$this, 'admin_submenu_ShowCategories']);
@@ -22,7 +24,7 @@ class AdminShowCategories
             'Show Categories',
             'Show Categories',
             'manage_options',
-            PARENT_SLUG_ADMIN_TAB.'-pv-show-categoriesvideo',
+            self::$menuSlag,
             [$this, 'admin_page_content_showCategories']
         );
     }

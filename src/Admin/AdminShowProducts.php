@@ -14,6 +14,7 @@ use GMProductVideo\Utilities\CustomAdminListTable;
 
 class AdminShowProducts
 {
+    public static $menuSlag = PARENT_SLUG_ADMIN_TAB.'-pv-show-productsvideo';
     public function __construct()
     {
         add_action('admin_menu', [$this, 'admin_submenu_ShowProducts']);
@@ -26,7 +27,7 @@ class AdminShowProducts
             'Show Products',
             'Show Products',
             'manage_options',
-            PARENT_SLUG_ADMIN_TAB.'-pv-show-productsvideo',
+            self::$menuSlag,
             [$this, 'admin_page_content_showProducts']
         );
     }
