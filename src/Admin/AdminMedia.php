@@ -6,7 +6,6 @@ defined('ABSPATH') or exit('access denied.');
 
 include ABSPATH.'wp-content/plugins/gm-productvideo/config/defines.php';
 
-//@todo remove convert static methods to non static
 class AdminMedia
 {
     /** @var array
@@ -157,8 +156,8 @@ class AdminMedia
      */
     public function loadGeneralsStyles()
     {
-        //wp_register_style('pv_bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css');
-        //wp_enqueue_style('pv_bootstrap');
+        wp_register_style('pv_bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css');
+        wp_enqueue_style('pv_bootstrap');
 
         //@todo load only in plugin's pages
         wp_register_style('gm_pv_adminglobal', '/wp-content/plugins/gm-productvideo/assets/css/admin/global.css');
@@ -170,12 +169,12 @@ class AdminMedia
      */
     public function loadGeneralsScripts()
     {
-        //wp_register_script('pv_bootstrap2', 'https://code.jquery.com/jquery-3.4.1.slim.min.js');
-        //wp_register_script('pv_bootstrap3', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js');
-        //wp_register_script('pv_bootstrap4', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js');
-        //wp_enqueue_script('pv_bootstrap2');
-        //wp_enqueue_script('pv_bootstrap3');
-        //wp_enqueue_script('pv_bootstrap4');
+        wp_register_script('pv_bootstrap2', 'https://code.jquery.com/jquery-3.4.1.slim.min.js');
+        wp_register_script('pv_bootstrap3', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js');
+        wp_register_script('pv_bootstrap4', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js');
+        wp_enqueue_script('pv_bootstrap2');
+        wp_enqueue_script('pv_bootstrap3');
+        wp_enqueue_script('pv_bootstrap4');
     }
 
     /**

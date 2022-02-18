@@ -22,8 +22,7 @@ $options= ["Cl. 16", "Cl. 13", "Cl. 21", "Cl. 25", "Cl. 30"];
         </div>
         <div class="second-row-multiselect">
             <div class="gm_pv_wrap_multiselect">
-                <select name="category_select" id="category_select" multiple>
-                    <option value="0">Choose category</option>
+                <select name="categories_select[]" id="category_select" multiple>
                     <?php foreach ($options as $key => $option) { ?>
                         <option value="<?php echo $key + 1 ?>"><?php echo $option ?></option>
                     <?php } ?>

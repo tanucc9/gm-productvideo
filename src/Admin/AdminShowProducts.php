@@ -34,8 +34,6 @@ class AdminShowProducts
 
     public function admin_page_content_showProducts()
     {
-        var_dump($_GET);
-
         // Send request to admin edit product to show edit page
         if (isset($_GET['action']) && $_GET['action'] === 'edit') {
             $editProductPage = new AdminEditProduct((int)$_GET['id']);

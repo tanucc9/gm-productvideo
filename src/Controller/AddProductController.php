@@ -20,8 +20,8 @@ class AddProductController
             $urlVideo = $_POST['url_video'];
         }
 
-        if (!isset($categories) && isset($_POST['category_select'])) {
-            $categories = $_POST['category_select'];
+        if (!isset($categories) && isset($_POST['categories_select'])) {
+            $categories = $_POST['categories_select'];
         }
 
         if (!isset($urlVideo, $titleProd)) {
@@ -34,11 +34,13 @@ class AddProductController
         $prodObj->url_video = $urlVideo;
 
         if (($idProd = Product::addProduct($prodObj)) !== false) {
-            if (0 != (int) $categories) {
+            if (!empty($categories)) {
                 $prodObj->id = (int)$idProd;
-                $catProdObj = new CategoryProduct($prodObj->id, $categories);
-                if (CategoryProduct::addCategoryProduct($catProdObj)) {
-                    self::forwardResponse('success');
+                foreach ($categories as $cat) {
+                    $catProdObj = new CategoryProduct($prodObj->id, (int)$cat);
+                    if (CategoryProduct::addCategoryProduct($catProdObj)) {
+                        self::forwardResponse('success');
+                    }
                 }
             } else {
                 self::forwardResponse('success');

@@ -24,6 +24,14 @@
 .gm_pv_wrap_multiselect select {
     width: 100%;
     max-width: none;
+    height: 200px!important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.gm_pv_wrap_multiselect select option {
+    padding: 5px 10px;
+    font-size: 16px;
 }
 
 .gm_pv_wrap_submit {
