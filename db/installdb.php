@@ -6,26 +6,29 @@ include( ABSPATH . 'wp-content/plugins/gm-productvideo/config/defines.php' );
 
 require_once( GM_PV__PLUGIN_DIR . 'logs/log.php' );
 
-class InstallDb {
+class InstallDb
+{
     private static $table_name_product = "pv_products";
     private static $table_name_category = "pv_categories";
     private static $table_name_categoryproduct = "pv_category_product";
 
 
-    public static function createTables () {
+    public static function createTables ()
+    {
         self::createCategoriesTable();
         self::createProductsTable();
         self::createCategoryProductTable();
     }
 
-    public static function createProductsTable() {
+    public static function createProductsTable()
+    {
        global $wpdb;
 
         $charset_collate = $wpdb->get_charset_collate();
         $table_name = $wpdb->prefix.self::$table_name_product;
 
         /* Controllo se la tabella è stata già creata */
-        if ( $wpdb->get_var("SHOW TABLES LIKE '" .$table_name. "'") != $table_name ) {
+        if ($wpdb->get_var("SHOW TABLES LIKE '" .$table_name. "'") != $table_name) {
 
             $sql = "CREATE TABLE " .$table_name. " (
                 id_product mediumint(9) NOT NULL AUTO_INCREMENT,
@@ -42,7 +45,8 @@ class InstallDb {
 
     }
 
-    public static function createCategoriesTable() {
+    public static function createCategoriesTable()
+    {
         global $wpdb;
 
         $charset_collate = $wpdb->get_charset_collate();

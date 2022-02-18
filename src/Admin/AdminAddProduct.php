@@ -7,6 +7,7 @@ defined('ABSPATH') or exit('access denied.');
 include ABSPATH.'wp-content/plugins/gm-productvideo/config/defines.php';
 
 use GMProductVideo\Controller\AddProductController;
+use GMProductVideo\Model\Category;
 use GMProductVideo\Model\CategoryProduct;
 use GMProductVideo\Model\Product;
 
@@ -44,6 +45,8 @@ class AdminAddProduct
 
         // vars admin header
         $titleHeader = 'Add new product';
+
+        $categories = Category::doRetrieveAll(null, null, 'title_category');
 
         include GM_PV__PLUGIN_DIR.'views/admin/admin-addproduct-view.php';
     }

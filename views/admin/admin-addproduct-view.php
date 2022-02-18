@@ -1,8 +1,3 @@
-<?php
-/* Stub select option */
-$options= ["Cl. 16", "Cl. 13", "Cl. 21", "Cl. 25", "Cl. 30"];
-
-?>
 <div class="container">
 
     <?php
@@ -20,15 +15,17 @@ $options= ["Cl. 16", "Cl. 13", "Cl. 21", "Cl. 25", "Cl. 30"];
                 <input type="text" placeholder="URL Video*" name="url_video" required>
             </div>
         </div>
+        <?php if (isset($categories) && $categories > 0) { ?>
         <div class="second-row-multiselect">
             <div class="gm_pv_wrap_multiselect">
                 <select name="categories_select[]" id="category_select" multiple>
-                    <?php foreach ($options as $key => $option) { ?>
-                        <option value="<?php echo $key + 1 ?>"><?php echo $option ?></option>
+                    <?php foreach ($categories as $cat) { ?>
+                        <option value="<?php echo $cat->id ?>"><?php echo $cat->title_category ?></option>
                     <?php } ?>
                 </select>
             </div>
         </div>
+        <?php } ?>
         <div class="gm_pv_wrap_submit">
             <button type="submit" class="button" id="submit-addproduct-form">Save</button>
         </div>
