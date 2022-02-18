@@ -1,29 +1,34 @@
 /* Add Product Video Page */
+#first-row-title-url {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 20px;
+}
 
-input {
+.gm_pv_wrap_input {
+    width: 40%;
+}
+
+.gm_pv_wrap_input input {
     width: 100%;
 }
 
-#category_select {
-    width: 89%;
-    height: 34px;
+.gm_pv_wrap_input_title_prod {
+    margin-right: 20px;
 }
 
-#select-category-col {
-    margin-left: 23px;
+.gm_pv_wrap_multiselect {
+    width: calc(80% + 20px);
 }
 
-.row{
-    margin-bottom: 23px;
+.gm_pv_wrap_multiselect select {
+    width: 100%;
+    max-width: none;
 }
 
-#title-addproduct-form {
-    margin: 20px 0px 35px 0;
-}
-#submit-addproduct-form {
-    width: 200px;
-}
-
-#col-submit-form {
-    text-align: center;
+.gm_pv_wrap_submit {
+    margin-top: 20px;
+    width: calc(80% + 20px);
+    display: flex;
+    justify-content: end;
 }
