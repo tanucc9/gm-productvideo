@@ -38,7 +38,7 @@ class AdminShowProducts
         if (isset($_GET['action']) && $_GET['action'] === 'edit') {
             $editProductPage = new AdminEditProduct((int)$_GET['id']);
             $editProductPage->display();
-        } elseif (isset($_GET['action']) && $_GET['action'] === 'view_product') { //view prod page
+        } elseif (isset($_GET['action']) && $_GET['action'] === 'view') { //view prod page
             $viewProductPage = new AdminViewProduct((int)$_GET['id']);
             $viewProductPage->display();
         } else {

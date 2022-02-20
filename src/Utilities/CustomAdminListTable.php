@@ -24,7 +24,7 @@ abstract class CustomAdminListTable extends \WP_List_Table
     public function column_id($item)
     {
         $actions = array(
-            'view' => sprintf('<a href="?page=%s&action=%s&id=%s">View</a>', $_REQUEST['page'], 'view_product', $item['id']),
+            'view' => sprintf('<a href="?page=%s&action=%s&id=%s">View</a>', $_REQUEST['page'], 'view', $item['id']),
             'edit' => sprintf('<a href="?page=%s&action=%s&id=%s">Edit</a>', $_REQUEST['page'], 'edit', $item['id']),
             'delete' => sprintf('<a href="?page=%s&action=%s&id=%s">Delete</a>', $_REQUEST['page'], 'delete', $item['id']),
         );
