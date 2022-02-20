@@ -26,12 +26,11 @@
                             placeholder="Name Product*"
                             name="name_product"
                             required
-                            <?php if (
-                                    isset($action) &&
-                                    $action === 'submit_edit'
-                                    && isset($prod)
-                            ) { ?>
+                            <?php if (isset($prod)) { ?>
                                 value="<?php echo $prod->title_product ?>"
+                            <?php } ?>
+                            <?php if (isset($action) && $action === 'view_product') { ?>
+                                readonly
                             <?php } ?>
                     >
                 </div>
@@ -41,12 +40,11 @@
                             placeholder="URL Video*"
                             name="url_video"
                             required
-                            <?php if (
-                                isset($action) &&
-                                $action === 'submit_edit'
-                                && isset($prod)
-                            ) { ?>
+                            <?php if (isset($prod)) { ?>
                                 value="<?php echo $prod->url_video ?>"
+                            <?php } ?>
+                            <?php if (isset($action) && $action === 'view_product') { ?>
+                                readonly
                             <?php } ?>
                     >
                 </div>
@@ -64,6 +62,9 @@
                                         ) { ?>
                                             selected
                                         <?php } ?>
+                                        <?php if (isset($action) && $action === 'view_product') { ?>
+                                            disabled = "true"
+                                        <?php } ?>
                                 >
                                     <?php echo $cat->title_category ?>
                                 </option>
@@ -72,11 +73,13 @@
                     </div>
                 </div>
             <?php } ?>
+
+            <?php if (isset($textSubmitBtn)) { ?>
             <div class="gm_pv_wrap_submit">
-                <?php if (isset($textSubmitBtn)) { ?>
                     <button type="submit" class="button" id="submit-<?php echo $action ?? '' ?>-form">
                         <?php echo $textSubmitBtn ?>
                     </button>
-                <?php } ?>
             </div>
+            <?php } ?>
+
         </form>

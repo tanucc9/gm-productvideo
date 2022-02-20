@@ -38,6 +38,9 @@ class AdminShowProducts
         if (isset($_GET['action']) && $_GET['action'] === 'edit') {
             $editProductPage = new AdminEditProduct((int)$_GET['id']);
             $editProductPage->display();
+        } elseif (isset($_GET['action']) && $_GET['action'] === 'view_product') { //view prod page
+            $viewProductPage = new AdminViewProduct((int)$_GET['id']);
+            $viewProductPage->display();
         } else {
 
             // Delete product
@@ -74,15 +77,5 @@ class AdminShowProducts
 
             include GM_PV__PLUGIN_DIR.'views/admin/admin-products-view.php';
         }
-
-        /*
-        $currentPage = isset($_GET['page_to_show']) ? (int) $_GET['page_to_show'] : 1;
-        $products = self::getProducts($currentPage);
-        $totPages = Product::getTotNumPages();
-        $isLastPage = $currentPage === $totPages;
-        $isFirstPage = $currentPage === 1;
-        */
-
-        //include GM_PV__PLUGIN_DIR.'views/admin/admin-products-view.php';
     }
 }

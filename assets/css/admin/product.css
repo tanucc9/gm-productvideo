@@ -40,3 +40,10 @@
     display: flex;
     justify-content: end;
 }
+
+#category_select option:checked {
+    color: white;
+    background-color: #007bff;
+    border: solid 1px white;
+    border-radius: 5px;
+}
