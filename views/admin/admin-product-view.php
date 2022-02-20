@@ -21,9 +21,10 @@
 
             <div id="first-row-title-url">
                 <div class="gm_pv_wrap_input gm_pv_wrap_input_title_prod">
+                    <label>Product Name*
                     <input
                             type="text"
-                            placeholder="Name Product*"
+                            placeholder="Name Product"
                             name="name_product"
                             required
                             <?php if (isset($prod)) { ?>
@@ -33,11 +34,13 @@
                                 readonly
                             <?php } ?>
                     >
+                    </label>
                 </div>
                 <div class="gm_pv_wrap_input gm_pv_wrap_input_url">
+                    <label>URL Video*
                     <input
                             type="text"
-                            placeholder="URL Video*"
+                            placeholder="URL Video"
                             name="url_video"
                             required
                             <?php if (isset($prod)) { ?>
@@ -47,11 +50,13 @@
                                 readonly
                             <?php } ?>
                     >
+                    </label>
                 </div>
             </div>
             <?php if (isset($categories) && $categories > 0) { ?>
                 <div class="second-row-multiselect">
                     <div class="gm_pv_wrap_multiselect">
+                        <label>Associated Categories
                         <select name="categories_select[]" id="category_select" multiple>
                             <?php foreach ($categories as $cat) { ?>
                                 <option
@@ -70,6 +75,7 @@
                                 </option>
                             <?php } ?>
                         </select>
+                        </label>
                     </div>
                 </div>
             <?php } ?>
