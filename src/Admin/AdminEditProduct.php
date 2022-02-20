@@ -34,7 +34,8 @@ class AdminEditProduct
 
         // vars admin header
         $titleHeader = isset($prod->id) ? 'Edit Product ' . $prod->id : 'Edit Product';
-        //@todo button to show products page
+        $urlNewElem = admin_url('admin.php?page=' . AdminShowProducts::$menuSlag);
+        $textBtnNewElem = 'Back to Show Products';
 
         $action = 'submit_edit';
         $textSubmitBtn = 'Update';
