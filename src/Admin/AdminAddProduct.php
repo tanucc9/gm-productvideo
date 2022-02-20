@@ -34,7 +34,7 @@ class AdminAddProduct
 
     public function admin_page_content_addProduct()
     {
-        if (isset($_POST['action']) && 'add_product' == $_POST['action']) {
+        if (isset($_GET['action']) && 'add_product' == $_GET['action']) {
             AddProductController::addProduct();
         }
 
@@ -48,6 +48,9 @@ class AdminAddProduct
 
         $categories = Category::doRetrieveAll(null, null, 'title_category');
 
-        include GM_PV__PLUGIN_DIR.'views/admin/admin-addproduct-view.php';
+        $action = 'add_product';
+        $textSubmitBtn = 'Save';
+
+        include GM_PV__PLUGIN_DIR.'views/admin/admin-product-view.php';
     }
 }

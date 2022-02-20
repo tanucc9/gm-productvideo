@@ -2,6 +2,8 @@
 
 namespace GMProductVideo\Admin;
 
+use GMProductVideo\Model\Category;
+use GMProductVideo\Model\CategoryProduct;
 use GMProductVideo\Model\Product;
 
 defined('ABSPATH') or exit('access denied.');
@@ -32,7 +34,13 @@ class AdminEditProduct
 
         // vars admin header
         $titleHeader = isset($prod->id) ? 'Edit Product ' . $prod->id : 'Edit Product';
+        //@todo button to show products page
 
-        include GM_PV__PLUGIN_DIR.'views/admin/admin-editproduct-view.php';
+        $action = 'submit_edit';
+        $textSubmitBtn = 'Update';
+        $selectedCategories = CategoryProduct::getCategoriesProduct($this->idProduct);
+        $categories = Category::doRetrieveAll(null, null, 'title_category');
+
+        include GM_PV__PLUGIN_DIR.'views/admin/admin-product-view.php';
     }
 }

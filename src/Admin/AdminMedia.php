@@ -20,10 +20,11 @@ class AdminMedia
                 PARENT_SLUG_ADMIN_TAB,
             ],
         ],
-        '/wp-content/plugins/gm-productvideo/assets/css/admin/addproduct.css' => [
+        '/wp-content/plugins/gm-productvideo/assets/css/admin/product.css' => [
             'name' => 'admin_addproduct',
             'pages' =>  [
                 PARENT_SLUG_ADMIN_TAB.'-pv-add-productvideo',
+                PARENT_SLUG_ADMIN_TAB . '-pv-show-productsvideo',
             ],
         ],
         /* multiselect

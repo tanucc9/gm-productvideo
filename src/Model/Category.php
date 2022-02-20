@@ -37,7 +37,7 @@ class Category
     }
 
     public static function doRetrieveAll(
-        $page,
+        $page = null,
         $limit = 10,
         $orderBy = 'id_product',
         $orderWay = 'asc'

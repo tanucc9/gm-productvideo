@@ -2,6 +2,7 @@
 
 namespace GMProductVideo\Controller;
 
+use GMProductVideo\Model\CategoryProduct;
 use GMProductVideo\Model\Product;
 
 class EditProductController
@@ -16,19 +17,22 @@ class EditProductController
     public static function editProduct(
         string $titleProd = null,
         string $urlProd = null,
-        int $idProd = null
+        int $idProd = null,
+        string $idsCategory = null
     ): array {
         $hasError = false;
 
         if (!isset($idProd) && isset($_GET['id'])) {
             $idProd = $_GET['id'];
         }
-
-        if (!isset($titleProd) && isset($_GET['title_product'])) {
-            $titleProd = $_GET['title_product'];
+        if (!isset($titleProd) && isset($_GET['name_product'])) {
+            $titleProd = $_GET['name_product'];
         }
         if (!isset($urlProd) && isset($_GET['url_video'])) {
             $urlProd = $_GET['url_video'];
+        }
+        if (!isset($idsCategory) && !empty($_GET['categories_select'])) {
+            $idsCategory = $_GET['categories_select'];
         }
 
         if (isset($titleProd, $urlProd, $idProd)) {
@@ -41,9 +45,17 @@ class EditProductController
                 $datasToUpdate,
                 ['id_product' => $idProd]
             );
-
             if ($result === false) {
                 $hasError = true;
+            }
+
+            // associations categories / product
+            CategoryProduct::deleteAllRecordsByIdProduct($idProd);
+            foreach ($idsCategory as $idCat) {
+                $catProd = new CategoryProduct($idProd, $idCat);
+                if (CategoryProduct::addCategoryProduct($catProd) === false) {
+                    $hasError = true;
+                }
             }
         } else {
             $hasError = true;
