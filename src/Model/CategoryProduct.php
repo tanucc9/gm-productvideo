@@ -16,7 +16,7 @@ class CategoryProduct
     public $id_category;
 
     /** @var table's name without prefix wordpress */
-    private static $name_table = 'pv_category_product';
+    private static $name_table = 'gm_pv_category_product';
 
     public function __construct($id_product = null, $id_category = null)
     {

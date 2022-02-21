@@ -4,15 +4,11 @@ defined('ABSPATH') or die('access denied.');
 
 include(ABSPATH . 'wp-content/plugins/gm-productvideo/config/defines.php');
 
-require_once(GM_PV__PLUGIN_DIR . 'logs/log.php');
+use GMProductVideo\Logs\Log;
 
+//@todo use name tables from model
 class InstallDb
 {
-    private static $table_name_product = "pv_products";
-    private static $table_name_category = "pv_categories";
-    private static $table_name_categoryproduct = "pv_category_product";
-
-
     public static function createTables()
     {
         self::createCategoriesTable();
@@ -24,8 +20,8 @@ class InstallDb
     {
         global $wpdb;
 
-        $charset_collate = $wpdb->get_charset_collate();
-        $table_name = $wpdb->prefix.self::$table_name_product;
+        $charset_collate = $wpdb->get_charset_collate() . ' engine = innoDB';
+        $table_name = $wpdb->prefix . GM_TABLE_NAME_PRODUCT;
 
         /* Controllo se la tabella è stata già creata */
         if ($wpdb->get_var("SHOW TABLES LIKE '" .$table_name. "'") != $table_name) {
@@ -39,7 +35,7 @@ class InstallDb
 
             require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
             dbDelta($sql);
-            log::doLog($wpdb->last_error, "createProductVideoTable");
+            Log::doLog($wpdb->last_error, "createProductVideoTable");
         }
     }
 
@@ -47,8 +43,8 @@ class InstallDb
     {
         global $wpdb;
 
-        $charset_collate = $wpdb->get_charset_collate();
-        $table_name = $wpdb->prefix.self::$table_name_category;
+        $charset_collate = $wpdb->get_charset_collate() . ' engine = innoDB';
+        $table_name = $wpdb->prefix . GM_TABLE_NAME_CATEGORY;
 
         /* Controllo se la tabella è stata già creata */
         if ($wpdb->get_var("SHOW TABLES LIKE '". $table_name ."'") != $table_name) {
@@ -62,7 +58,7 @@ class InstallDb
             require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
             dbDelta($sql);
 
-            log::doLog($wpdb->last_error, "createCategoryTable");
+            Log::doLog($wpdb->last_error, "createCategoryTable");
         }
     }
 
@@ -70,26 +66,24 @@ class InstallDb
     {
         global $wpdb;
 
-        $charset_collate = $wpdb->get_charset_collate();
-        $table_name = $wpdb->prefix.self::$table_name_categoryproduct;
+        $charset_collate = $wpdb->get_charset_collate() . ' engine = innoDB';
+        $table_name = $wpdb->prefix . GM_TABLE_NAME_CATEGORYPRODUCT;
 
         /* Controllo se la tabella è stata già creata */
         if ($wpdb->get_var("SHOW TABLES LIKE '" .$table_name. "'") != $table_name) {
             $sql = "CREATE TABLE " .$table_name. " (
                 id_product mediumint(9) NOT NULL,
                 id_category mediumint(9) NOT NULL,
-                FOREIGN KEY (id_product) REFERENCES " .$wpdb->prefix.self::$table_name_product. "(id_product)
-                ON DELETE CASCADE
-                ON UPDATE CASCADE,
-                FOREIGN KEY (id_category) REFERENCES " .$wpdb->prefix.self::$table_name_category. "(id_category)
-                ON DELETE CASCADE
-                ON UPDATE CASCADE,
+                FOREIGN KEY (id_product) REFERENCES " . $wpdb->prefix . GM_TABLE_NAME_PRODUCT . "(id_product)
+                ON DELETE CASCADE,
+                FOREIGN KEY (id_category) REFERENCES " . $wpdb->prefix . GM_TABLE_NAME_CATEGORY . "(id_category)
+                ON DELETE CASCADE,
                 CONSTRAINT category_product UNIQUE  (id_product, id_category)
                 ) $charset_collate;";
 
             require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
             dbDelta($sql);
-            log::doLog($wpdb->last_error, "createCategoryProductTable");
+            Log::doLog($wpdb->last_error, "createCategoryProductTable");
         }
     }
 }

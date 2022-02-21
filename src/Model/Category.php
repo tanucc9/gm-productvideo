@@ -21,7 +21,7 @@ class Category
 
 
     /** @var table's name without prefix wordpress */
-    private static $name_table = 'pv_categories';
+    private static $name_table = 'gm_pv_categories';
 
     public function __construct($id = null, $title_category = null, $last_edit = null)
     {

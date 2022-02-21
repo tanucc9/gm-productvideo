@@ -23,7 +23,7 @@ class Product
     public $url_video;
 
     /** @var table's name without prefix wordpress */
-    private static $name_table = 'pv_products';
+    private static $name_table = 'gm_pv_products';
 
     public function __construct($id = null, $last_edit = null, $title_product = null, $url_video = null)
     {
