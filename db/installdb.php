@@ -5,8 +5,10 @@ defined('ABSPATH') or die('access denied.');
 include(ABSPATH . 'wp-content/plugins/gm-productvideo/config/defines.php');
 
 use GMProductVideo\Logs\Log;
+use GMProductVideo\Model\Category;
+use GMProductVideo\Model\Product;
+use GMProductVideo\Model\CategoryProduct;
 
-//@todo use name tables from model
 class InstallDb
 {
     public static function createTables()
@@ -21,7 +23,7 @@ class InstallDb
         global $wpdb;
 
         $charset_collate = $wpdb->get_charset_collate() . ' engine = innoDB';
-        $table_name = $wpdb->prefix . GM_TABLE_NAME_PRODUCT;
+        $table_name = $wpdb->prefix . Product::$name_table;
 
         /* Controllo se la tabella è stata già creata */
         if ($wpdb->get_var("SHOW TABLES LIKE '" .$table_name. "'") != $table_name) {
@@ -44,7 +46,7 @@ class InstallDb
         global $wpdb;
 
         $charset_collate = $wpdb->get_charset_collate() . ' engine = innoDB';
-        $table_name = $wpdb->prefix . GM_TABLE_NAME_CATEGORY;
+        $table_name = $wpdb->prefix . Category::$name_table;
 
         /* Controllo se la tabella è stata già creata */
         if ($wpdb->get_var("SHOW TABLES LIKE '". $table_name ."'") != $table_name) {
@@ -67,16 +69,16 @@ class InstallDb
         global $wpdb;
 
         $charset_collate = $wpdb->get_charset_collate() . ' engine = innoDB';
-        $table_name = $wpdb->prefix . GM_TABLE_NAME_CATEGORYPRODUCT;
+        $table_name = $wpdb->prefix . CategoryProduct::$name_table;
 
         /* Controllo se la tabella è stata già creata */
         if ($wpdb->get_var("SHOW TABLES LIKE '" .$table_name. "'") != $table_name) {
             $sql = "CREATE TABLE " .$table_name. " (
                 id_product mediumint(9) NOT NULL,
                 id_category mediumint(9) NOT NULL,
-                FOREIGN KEY (id_product) REFERENCES " . $wpdb->prefix . GM_TABLE_NAME_PRODUCT . "(id_product)
+                FOREIGN KEY (id_product) REFERENCES " . $wpdb->prefix . Product::$name_table . "(id_product)
                 ON DELETE CASCADE,
-                FOREIGN KEY (id_category) REFERENCES " . $wpdb->prefix . GM_TABLE_NAME_CATEGORY . "(id_category)
+                FOREIGN KEY (id_category) REFERENCES " . $wpdb->prefix . Category::$name_table . "(id_category)
                 ON DELETE CASCADE,
                 CONSTRAINT category_product UNIQUE  (id_product, id_category)
                 ) $charset_collate;";

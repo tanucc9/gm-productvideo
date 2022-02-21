@@ -5,8 +5,10 @@ defined('ABSPATH') or die('access denied.');
 include(ABSPATH . 'wp-content/plugins/gm-productvideo/config/defines.php');
 
 use GMProductVideo\Logs\Log;
+use GMProductVideo\Model\Category;
+use GMProductVideo\Model\Product;
+use GMProductVideo\Model\CategoryProduct;
 
-//@todo use name tables from model
 class UninstallDb
 {
     public static function deleteTables()
@@ -20,7 +22,7 @@ class UninstallDb
     {
         global $wpdb;
 
-        $table_name=$wpdb->prefix . GM_TABLE_NAME_CATEGORY;
+        $table_name=$wpdb->prefix . Category::$name_table;
 
         if ($wpdb->get_var("SHOW TABLES LIKE '" .$table_name. "'") == $table_name) {
             $sql = "DROP TABLE IF EXISTS " .$table_name;
@@ -33,7 +35,7 @@ class UninstallDb
     {
         global $wpdb;
 
-        $table_name = $wpdb->prefix . GM_TABLE_NAME_PRODUCT;
+        $table_name = $wpdb->prefix . Product::$name_table;
         if ($wpdb->get_var("SHOW TABLES LIKE '" .$table_name. "'") == $table_name) {
             $sql = "DROP TABLE IF EXISTS " .$table_name;
             $wpdb->query($sql);
@@ -45,7 +47,7 @@ class UninstallDb
     {
         global $wpdb;
 
-        $table_name=$wpdb->prefix . GM_TABLE_NAME_CATEGORYPRODUCT;
+        $table_name=$wpdb->prefix . CategoryProduct::$name_table;
 
         if ($wpdb->get_var("SHOW TABLES LIKE '" .$table_name. "'") == $table_name) {
             $sql = "DROP TABLE IF EXISTS " .$table_name;
