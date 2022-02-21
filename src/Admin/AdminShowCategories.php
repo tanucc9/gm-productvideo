@@ -31,16 +31,7 @@ class AdminShowCategories
 
     public function admin_page_content_showCategories()
     {
-        /*$myListTable = new CustomAdminListTable();
-        echo '<div class="wrap"><h2>My List Table Test</h2>';
-        $myListTable->prepare_items();
-        echo '<form id="events-filter" method="get">
-    <input type="hidden" name="page" value="' .$_REQUEST['page']. '" />';
-        $myListTable->display();
-        echo '</form>';
-        echo '</div>';*/
 
-        //include GM_PV__PLUGIN_DIR.'views/admin/admin-products-view.php';
     }
 }
 

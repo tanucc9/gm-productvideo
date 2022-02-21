@@ -75,7 +75,7 @@ class AdminShowProducts
             $textBtnNewElem = 'Add new Product';
             $titleHeader = 'Products';
 
-            include GM_PV__PLUGIN_DIR.'views/admin/admin-products-view.php';
+            include GM_PV__PLUGIN_DIR.'views/admin/admin-list-view.php';
         }
     }
 }
