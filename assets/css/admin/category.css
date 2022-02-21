@@ -1,0 +1,53 @@
+/* Add Category Video Page */
+#first-row-title-url {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 20px;
+}
+
+.gm_pv_wrap_input {
+    width: 80%;
+}
+
+.gm_pv_wrap_input input {
+    width: 100%;
+}
+
+.gm_pv_wrap_input_title_prod {
+    margin-right: 20px;
+}
+
+.gm_pv_wrap_multiselect {
+    width: 80%;
+}
+
+.gm_pv_wrap_multiselect select {
+    width: 100%;
+    max-width: none;
+    height: 200px!important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.gm_pv_wrap_multiselect select option {
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+.gm_pv_wrap_submit {
+    margin-top: 20px;
+    width: calc(80% + 20px);
+    display: flex;
+    justify-content: end;
+}
+
+#products_select option:checked {
+    color: white;
+    background-color: #007bff;
+    border: solid 1px white;
+    border-radius: 5px;
+}
+
+label {
+    width: 100%;
+}

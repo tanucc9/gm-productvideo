@@ -27,6 +27,13 @@ class AdminMedia
                 PARENT_SLUG_ADMIN_TAB . '-pv-show-productsvideo',
             ],
         ],
+        '/wp-content/plugins/gm-productvideo/assets/css/admin/category.css' => [
+            'name' => 'admin_addproduct',
+            'pages' =>  [
+                PARENT_SLUG_ADMIN_TAB.'-pv-add-category',
+                PARENT_SLUG_ADMIN_TAB . '-pv-show-categoriesvideo',
+            ],
+        ],
         /* multiselect
         '/wp-content/plugins/gm-productvideo/assets/css/multiselect/bootstrap.min.css' => [
             'name' => 'multiselect_css_1',

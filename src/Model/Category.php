@@ -36,6 +36,22 @@ class Category
         }
     }
 
+    public static function addCategory(Category $cat)
+    {
+        global $wpdb;
+
+        $table = $wpdb->prefix.self::$name_table;
+        $data = [
+            'title_category' => $cat->title_category,
+        ];
+
+        if ($wpdb->insert($table, $data)) {
+            return $wpdb->insert_id;
+        }
+
+        return false;
+    }
+
     public static function doRetrieveAll(
         $page = null,
         $limit = 10,

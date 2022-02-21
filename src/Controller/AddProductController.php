@@ -2,6 +2,7 @@
 
 namespace GMProductVideo\Controller;
 
+use GMProductVideo\Admin\AdminShowProducts;
 use GMProductVideo\Model\CategoryProduct;
 use GMProductVideo\Model\Product;
 
@@ -39,7 +40,7 @@ class AddProductController
                 foreach ($categories as $cat) {
                     $catProdObj = new CategoryProduct($prodObj->id, (int)$cat);
                     if (CategoryProduct::addCategoryProduct($catProdObj) === false) {
-                        self::forwardResponse('success');
+                        self::forwardResponse('error');
                     }
                 }
             }
@@ -52,19 +53,18 @@ class AddProductController
 
     protected static function forwardResponse($result)
     {
+        $url = get_site_url().'/wp-admin/admin.php?page=' . AdminShowProducts::$menuSlag;
+        $parameters = '';
+
         if ('success' == $result) {
             //parameters to send
             $parameters = '&type_alert=success&message_alert=The new product was successfully added.';
-            $url = get_site_url().'/wp-admin/admin.php?page=gm-prodotti-pv-show-productsvideo'.$parameters;
-
-            wp_safe_redirect($url);
-            exit();
         } elseif ('error' == $result) {
             $parameters = '&type_alert=danger&message_alert=There was an error. Try again to add the product.';
-            $url = get_site_url().'/wp-admin/admin.php?page=gm-prodotti-pv-add-productvideo'.$parameters;
-
-            wp_safe_redirect($url);
-            exit();
         }
+
+        wp_safe_redirect($url . $parameters);
+        exit();
+
     }
 }
