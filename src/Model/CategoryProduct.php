@@ -61,6 +61,22 @@ class CategoryProduct
         return $wpdb->delete($table, $where);
     }
 
+    /** Delete all records with that specific id Category.
+     * @param int $idCategory int id product
+     */
+    public static function deleteAllRecordsByIdCategory(int $idCategory):bool
+    {
+        if (!isset($idCategory)) {
+            return false;
+        }
+
+        global $wpdb;
+
+        $table = $wpdb->prefix . self::$name_table;
+        $where = ['id_category' => $idCategory];
+        return $wpdb->delete($table, $where);
+    }
+
     /** Return the categories associated to product.
      * @var int $idProduct the id of the product
      * @return array the list containing the ids category
@@ -85,5 +101,31 @@ class CategoryProduct
         }
 
         return $idsCat;
+    }
+
+    /** Return the products associated to category.
+     * @var int $idCategory the id of the category
+     * @return array the list containing the ids product
+     */
+    public static function getProductsCategory(int $idCategory): array
+    {
+        if (!isset($idCategory)) {
+            return [];
+        }
+
+        global $wpdb;
+
+        $table = $wpdb->prefix . self::$name_table;
+        $sql = 'SELECT id_product FROM ' . $table . ' WHERE id_category = ' . $idCategory;
+        $result = $wpdb->get_results($sql);
+
+        $idsProd = [];
+        if (count((array) $result) >= 1) {
+            foreach ($result as $row) {
+                $idsProd[] = $row->id_product;
+            }
+        }
+
+        return $idsProd;
     }
 }

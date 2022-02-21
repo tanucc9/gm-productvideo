@@ -8,6 +8,6 @@
 
     <form id="events-filter" method="get">
         <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
-        <?php isset($listProductsObj) ? $listProductsObj->display() : 'Nothing to show' ?>
+        <?php isset($listTableObj) ? $listTableObj->display() : 'Nothing to show' ?>
     </form>
 </div>

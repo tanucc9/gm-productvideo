@@ -52,6 +52,43 @@ class Category
         return false;
     }
 
+    public static function updateCategory(array $data, array $where)
+    {
+        global $wpdb;
+
+        $table = $wpdb->prefix . self::$name_table;
+
+        return $wpdb->update($table, $data, $where);
+    }
+
+
+    public static function deleteCategory(int $id)
+    {
+        global $wpdb;
+
+        $table = $wpdb->prefix . self::$name_table;
+        $where = ["id_category" => $id];
+
+        return $wpdb->delete($table, $where);
+    }
+
+    public static function doRetrieveById(int $idCategory)
+    {
+        global $wpdb;
+
+        $table = $wpdb->prefix . self::$name_table;
+        $sql = 'SELECT * FROM ' . $table . ' WHERE id_category = ' . $idCategory;
+        $result = $wpdb->get_results($sql);
+
+        if (count((array) $result) >= 1) {
+            foreach ($result as $row) {
+                return new Category($row->id_category, $row->title_category, $row->last_edit);
+            }
+        }
+
+        return null;
+    }
+
     public static function doRetrieveAll(
         $page = null,
         $limit = 10,
@@ -88,4 +125,37 @@ class Category
         return null;
     }
 
+    public static function getNumCategories(): int
+    {
+        global $wpdb;
+
+        $table = $wpdb->prefix.self::$name_table;
+        $sql = 'SELECT COUNT(id_category) AS num_categories FROM ' . $table;
+
+        $result = json_decode(
+            json_encode($wpdb->get_results($sql)),
+            true
+        );
+
+        if (!empty($result)) {
+            return (int) $result[0]['num_categories'];
+        }
+
+        return 0;
+    }
+
+    public static function getTotNumPages($rowPerPage = 10): int
+    {
+        if (isset($rowPerPage)) {
+            $page = (int) (self::getNumCategories() / $rowPerPage);
+            $decimal = self::getNumCategories() % $rowPerPage;
+            if ($decimal > 0) {
+                ++$page;
+            }
+
+            return $page;
+        }
+
+        return 0;
+    }
 }

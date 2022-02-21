@@ -1,10 +1,10 @@
 <?php
 
-defined( 'ABSPATH' ) or die( 'access denied.' );
+defined('ABSPATH') or die('access denied.');
 
-include( ABSPATH . 'wp-content/plugins/gm-productvideo/config/defines.php' );
+include(ABSPATH . 'wp-content/plugins/gm-productvideo/config/defines.php');
 
-require_once( GM_PV__PLUGIN_DIR . 'logs/log.php' );
+require_once(GM_PV__PLUGIN_DIR . 'logs/log.php');
 
 class InstallDb
 {
@@ -13,7 +13,7 @@ class InstallDb
     private static $table_name_categoryproduct = "pv_category_product";
 
 
-    public static function createTables ()
+    public static function createTables()
     {
         self::createCategoriesTable();
         self::createProductsTable();
@@ -22,14 +22,13 @@ class InstallDb
 
     public static function createProductsTable()
     {
-       global $wpdb;
+        global $wpdb;
 
         $charset_collate = $wpdb->get_charset_collate();
         $table_name = $wpdb->prefix.self::$table_name_product;
 
         /* Controllo se la tabella è stata già creata */
         if ($wpdb->get_var("SHOW TABLES LIKE '" .$table_name. "'") != $table_name) {
-
             $sql = "CREATE TABLE " .$table_name. " (
                 id_product mediumint(9) NOT NULL AUTO_INCREMENT,
                 last_edit datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
@@ -38,11 +37,10 @@ class InstallDb
                 PRIMARY KEY  (id_product)
                 ) $charset_collate;";
 
-            require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-            dbDelta( $sql );
+            require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+            dbDelta($sql);
             log::doLog($wpdb->last_error, "createProductVideoTable");
         }
-
     }
 
     public static function createCategoriesTable()
@@ -53,7 +51,7 @@ class InstallDb
         $table_name = $wpdb->prefix.self::$table_name_category;
 
         /* Controllo se la tabella è stata già creata */
-        if ( $wpdb->get_var("SHOW TABLES LIKE '". $table_name ."'") != $table_name ) {
+        if ($wpdb->get_var("SHOW TABLES LIKE '". $table_name ."'") != $table_name) {
             $sql = "CREATE TABLE ". $table_name ." (
                 id_category mediumint(9) NOT NULL AUTO_INCREMENT,
                 last_edit datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
@@ -68,15 +66,15 @@ class InstallDb
         }
     }
 
-    public static function createCategoryProductTable() {
+    public static function createCategoryProductTable()
+    {
         global $wpdb;
 
         $charset_collate = $wpdb->get_charset_collate();
         $table_name = $wpdb->prefix.self::$table_name_categoryproduct;
 
         /* Controllo se la tabella è stata già creata */
-        if ( $wpdb->get_var("SHOW TABLES LIKE '" .$table_name. "'") != $table_name ) {
-
+        if ($wpdb->get_var("SHOW TABLES LIKE '" .$table_name. "'") != $table_name) {
             $sql = "CREATE TABLE " .$table_name. " (
                 id_product mediumint(9) NOT NULL,
                 id_category mediumint(9) NOT NULL,
@@ -89,11 +87,9 @@ class InstallDb
                 CONSTRAINT category_product UNIQUE  (id_product, id_category)
                 ) $charset_collate;";
 
-            require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-            dbDelta( $sql );
+            require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+            dbDelta($sql);
             log::doLog($wpdb->last_error, "createCategoryProductTable");
         }
-
     }
-
 }
