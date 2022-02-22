@@ -158,4 +158,32 @@ class Category
 
         return 0;
     }
+
+    /** Return the products associated to category
+     * @param int $idCategory
+     * @return array|null
+     */
+    public static function getAssociatedProducts(int $idCategory)
+    {
+        global $wpdb;
+
+        $table = $wpdb->prefix . self::$name_table;
+        $sql = 'SELECT * FROM ' . $wpdb->prefix . Product::$name_table . ' AS product' .
+            ' LEFT JOIN ' . $wpdb->prefix . CategoryProduct::$name_table . ' catProd ON (product.id_product = catProd.id_product)' .
+            ' WHERE catProd.id_category = ' . $idCategory;
+
+        $result = $wpdb->get_results($sql);
+
+        if (count((array) $result) >= 1) {
+            $prods = [];
+            foreach ($result as $product) {
+                $prodObj = new Product($product->id_product, $product->last_edit, $product->title_product, $product->url_video);
+                $prods[] = $prodObj;
+            }
+
+            return $prods;
+        }
+
+        return null;
+    }
 }

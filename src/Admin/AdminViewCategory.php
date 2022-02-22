@@ -38,7 +38,7 @@ class AdminViewCategory
         $textBtnNewElem = 'Back to Show Categories';
 
         $action = 'view_category';
-        $selectedProducts = CategoryProduct::getProductsCategory($this->idCategory);
+        $selectedProducts = CategoryProduct::getIdsProductsCategory($this->idCategory);
         $products = Product::doRetrieveAll(null, null, 'title_product');
 
         include GM_PV__PLUGIN_DIR.'views/admin/admin-category-view.php';

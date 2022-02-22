@@ -81,7 +81,7 @@ class CategoryProduct
      * @var int $idProduct the id of the product
      * @return array the list containing the ids category
      */
-    public static function getCategoriesProduct(int $idProduct): array
+    public static function getIdsCategoriesProduct(int $idProduct): array
     {
         if (!isset($idProduct)) {
             return [];
@@ -107,7 +107,7 @@ class CategoryProduct
      * @var int $idCategory the id of the category
      * @return array the list containing the ids product
      */
-    public static function getProductsCategory(int $idCategory): array
+    public static function getIdsProductsCategory(int $idCategory): array
     {
         if (!isset($idCategory)) {
             return [];

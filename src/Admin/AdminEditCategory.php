@@ -39,7 +39,7 @@ class AdminEditCategory
 
         $action = 'submit_edit';
         $textSubmitBtn = 'Update';
-        $selectedProducts = CategoryProduct::getProductsCategory($this->idCategory);
+        $selectedProducts = CategoryProduct::getIdsProductsCategory($this->idCategory);
         $products = Product::doRetrieveAll(null, null, 'title_product');
 
         include GM_PV__PLUGIN_DIR.'views/admin/admin-category-view.php';
