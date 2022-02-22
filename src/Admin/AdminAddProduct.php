@@ -28,7 +28,8 @@ class AdminAddProduct
             'Add new product',
             'manage_options',
             self::$menuSlag,
-            [$this, 'admin_page_content_addProduct']
+            [$this, 'admin_page_content_addProduct'],
+            2
         );
     }
 

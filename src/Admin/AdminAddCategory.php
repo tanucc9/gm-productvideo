@@ -29,7 +29,8 @@ class AdminAddCategory
             'Add new category',
             'manage_options',
             self::$menuSlag,
-            [$this, 'admin_page_content_addCategory']
+            [$this, 'admin_page_content_addCategory'],
+            2
         );
     }
 
