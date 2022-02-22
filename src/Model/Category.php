@@ -163,14 +163,28 @@ class Category
      * @param int $idCategory
      * @return array|null
      */
-    public static function getAssociatedProducts(int $idCategory)
-    {
+    public static function getAssociatedProducts(
+        int $idCategory,
+        $page,
+        $limit = 10,
+        $orderBy = 'id_product',
+        $orderWay = 'asc'
+    ) {
         global $wpdb;
 
-        $table = $wpdb->prefix . self::$name_table;
-        $sql = 'SELECT * FROM ' . $wpdb->prefix . Product::$name_table . ' AS product' .
+        $sql = 'SELECT product.*, catProd.id_category FROM ' . $wpdb->prefix . Product::$name_table . ' AS product' .
             ' LEFT JOIN ' . $wpdb->prefix . CategoryProduct::$name_table . ' catProd ON (product.id_product = catProd.id_product)' .
             ' WHERE catProd.id_category = ' . $idCategory;
+
+        if (isset($orderBy, $orderWay)) {
+            $sql .= ' ORDER BY ' . $orderBy . ' ' . $orderWay;
+        }
+
+        if (isset($limit, $page)) {
+            $page--;
+            $elemToSkip = $limit * $page;
+            $sql .= ' LIMIT ' . $limit . ' OFFSET ' . $elemToSkip;
+        }
 
         $result = $wpdb->get_results($sql);
 

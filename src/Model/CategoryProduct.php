@@ -128,4 +128,40 @@ class CategoryProduct
 
         return $idsProd;
     }
+
+    /** Return the numbers of products associated with a specific category */
+    public static function getNumProductsAssociatedToCategory(int $idCategory): int
+    {
+        global $wpdb;
+
+        $table = $wpdb->prefix.self::$name_table;
+        $sql = 'SELECT COUNT(id_product) AS num_products FROM ' . $table .
+                ' WHERE id_category = ' . $idCategory;
+
+        $result = json_decode(
+            json_encode($wpdb->get_results($sql)),
+            true
+        );
+
+        if (!empty($result)) {
+            return (int) $result[0]['num_products'];
+        }
+
+        return 0;
+    }
+
+    public static function getTotNumPagesProductsAssociatedToCategory(int $idCategory, int $rowPerPage = 10): int
+    {
+        if (isset($rowPerPage)) {
+            $page = (int) (self::getNumProductsAssociatedToCategory($idCategory) / $rowPerPage);
+            $decimal = self::getNumProductsAssociatedToCategory($idCategory) % $rowPerPage;
+            if ($decimal > 0) {
+                ++$page;
+            }
+
+            return $page;
+        }
+
+        return 0;
+    }
 }

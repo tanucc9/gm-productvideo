@@ -8,6 +8,7 @@ include ABSPATH.'wp-content/plugins/gm-productvideo/config/defines.php';
 
 use GMProductVideo\Logs\Log;
 use GMProductVideo\Model\Category;
+use GMProductVideo\Model\CategoryProduct;
 
 class FrontShowCatogories
 {
@@ -25,8 +26,13 @@ class FrontShowCatogories
         }
 
         $idCategory = (int) $atts['id_category'];
-        $products = Category::getAssociatedProducts($idCategory);
 
-        //@todo template to show
+        $currentPage = (int) $_GET['page_to_show'] ?? 1;
+        $products = Category::getAssociatedProducts($idCategory, $currentPage);
+        $totPages = CategoryProduct::getTotNumPagesProductsAssociatedToCategory($idCategory);
+        $isLastPage = $currentPage === $totPages;
+        $isFirstPage = $currentPage === 1;
+
+        include GM_PV__PLUGIN_DIR.'views/front/front-list-products-view.php';
     }
 }

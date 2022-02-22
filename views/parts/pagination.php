@@ -1,11 +1,14 @@
-<?php if (isset($totPages) && $totPages > 1) { ?>
-    <nav aria-label="Page navigation">
-        <ul class="pagination">
-            <li class="page-item">
+<?php if (isset($totPages) && $totPages > 1) {
+    global $wp;
+    $current_url = home_url( add_query_arg( array(), $wp->request ) );
+    ?>
+    <nav>
+        <ul class="gm_pv_pagination">
+            <li class="gm_pv_page-item gm_pv_previous_pag">
                 <a
                     class="page-link"
                     <?php if (isset($currentPage) && $currentPage > 1) { ?>
-                        href="<?php echo admin_url('admin.php?page=' . PARENT_SLUG_ADMIN_TAB . '-pv-show-productsvideo'); ?>&page_to_show=<?php echo($currentPage - 1) ?>"
+                        href="<?php echo $current_url ?>?page_to_show=<?php echo($currentPage - 1) ?>"
                     <?php } ?>
                     aria-label="Previous"
                 >
@@ -41,21 +44,21 @@
                 } else {
                     $pageValue = $i;
                 } ?>
-                <li class="page-item <?php if (($isFirstPage && $i === 1) || ($isLastPage && $i === $numButtons) || (!$isFirstPage && !$isLastPage && $i === 2)) {?> active <?php } ?>">
+                <li class="gm_pv_page-item <?php if (($isFirstPage && $i === 1) || ($isLastPage && $i === $numButtons) || (!$isFirstPage && !$isLastPage && $i === 2)) {?> active <?php } ?>">
                     <a
                         class="page-link"
-                        href="<?php echo admin_url('admin.php?page=' . PARENT_SLUG_ADMIN_TAB . '-pv-show-productsvideo'); ?>&page_to_show=<?php echo $pageValue ?>"
+                        href="<?php echo $current_url ?>?page_to_show=<?php echo $pageValue ?>"
                     >
                         <?php echo $pageValue ?>
                     </a>
                 </li>
             <?php } ?>
 
-            <li class="page-item">
+            <li class="gm_pv_page-item gm_pv_next_pag">
                 <a
                     class="page-link"
                     <?php if (isset($isLastPage) && !$isLastPage) { ?>
-                        href="<?php echo admin_url('admin.php?page=' . PARENT_SLUG_ADMIN_TAB . '-pv-show-productsvideo'); ?>&page_to_show=<?php echo($currentPage + 1) ?>"
+                        href="<?php echo $current_url ?>?page_to_show=<?php echo($currentPage + 1) ?>"
                     <?php } ?>
                     aria-label="Next"
                 >
@@ -65,4 +68,40 @@
             </li>
         </ul>
     </nav>
+
+    <style>
+        .gm_pv_pagination {
+            display: flex;
+            justify-content: center;
+        }
+
+        .gm_pv_previous_pag a {
+            border-bottom-left-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+
+        .gm_pv_next_pag a {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .gm_pv_page-item a {
+            padding: 5px 10px;
+            border: 1px solid #dee2e6
+        }
+
+        .gm_pv_page-item {
+            list-style-type: none;
+        }
+
+        .gm_pv_page-item.active {
+            background-color: #007bff;
+        }
+
+        .gm_pv_page-item.active a {
+            background-color: #007bff;
+            color: white;
+            border: 1px solid #007bff
+        }
+    </style>
 <?php } ?>

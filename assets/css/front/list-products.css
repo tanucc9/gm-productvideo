@@ -1,0 +1,23 @@
+.gm_pv_container_list_products {
+    max-width: 1300px;
+    margin: 50px auto;
+}
+
+.gm_pv_container_products {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.gm_pv_product {
+    width: 30%;
+    margin-bottom: 50px;
+}
+
+.gm_pv_container_title {
+    padding-top: 10px;
+}
+
+.gm_pv_container_title h4 {
+    text-align: center;
+}
