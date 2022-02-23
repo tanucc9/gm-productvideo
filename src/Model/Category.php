@@ -200,4 +200,21 @@ class Category
 
         return null;
     }
+
+    public static function getTitleByIdCategory(int $idCategory)
+    {
+        global $wpdb;
+
+        $table = $wpdb->prefix . self::$name_table;
+        $sql = 'SELECT title_category FROM ' . $table . ' WHERE id_category = ' . $idCategory;
+        $result = $wpdb->get_results($sql);
+
+        if (count((array) $result) >= 1) {
+            foreach ($result as $row) {
+                return $row->title_category;
+            }
+        }
+
+        return null;
+    }
 }

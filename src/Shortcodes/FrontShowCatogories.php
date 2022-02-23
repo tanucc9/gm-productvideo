@@ -32,6 +32,7 @@ class FrontShowCatogories
         $totPages = CategoryProduct::getTotNumPagesProductsAssociatedToCategory($idCategory);
         $isLastPage = $currentPage === $totPages;
         $isFirstPage = $currentPage === 1;
+        $nameCategory = Category::getTitleByIdCategory($idCategory);
 
         include GM_PV__PLUGIN_DIR.'views/front/front-list-products-view.php';
     }
