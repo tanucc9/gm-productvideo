@@ -15,7 +15,7 @@ jQuery(".gm_pv_preview_video").on("click", function() {
    removeActualVideo();
 
    const embedCode = jQuery(this).attr("data-embed-code");
-   const containerVideo = jQuery(this).parent().attr('id');
+   const containerVideo = jQuery(this).parent().find(".gm_pv_video").attr('id');
 
    player = new YT.Player(containerVideo, {
       height: '100%',

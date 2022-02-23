@@ -8,7 +8,8 @@
                 $embedCodeYT = explode("https://www.youtube.com/embed/", $product->url_video)[1];
             ?>
                 <div class="gm_pv_product" id="product_<?php echo $product->id ?>" data-id-product="<?php echo $product->id ?>">
-                    <div class="gm_pv_container_video" id="gm_pv_container_video_<?php echo $product->id ?>">
+                    <div class="gm_pv_container_video">
+                        <div class="gm_pv_video" id="gm_pv_video_<?php echo $product->id ?>"></div>
                         <div class="gm_pv_preview_video" data-embed-code="<?php echo $embedCodeYT ?>">
                             <img src="<?php echo get_site_url() ?>/wp-content/plugins/gm-productvideo/assets/img/player-start.png" />
                         </div>
