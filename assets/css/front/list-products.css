@@ -50,3 +50,37 @@
 .gm_pv_header {
     margin-bottom: 15px;
 }
+
+@media (max-width: 1300px) {
+    .gm_pv_container_list_products {
+        padding: 0 50px;
+    }
+
+    .gm_pv_container_video {
+        height: 200px;
+    }
+}
+
+@media (max-width: 991px) {
+    .gm_pv_product {
+        width: 48%;
+    }
+
+    .gm_pv_container_video {
+        height: 230px;
+    }
+}
+
+@media (max-width: 767px) {
+    .gm_pv_container_video {
+        height: 45vw;
+    }
+
+    .gm_pv_product {
+        width: 100%;
+    }
+
+    .gm_pv_container_list_products {
+        padding: 0 30px;
+    }
+}
