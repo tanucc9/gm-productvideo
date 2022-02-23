@@ -26,14 +26,16 @@ class FrontShowCatogories
         }
 
         $idCategory = (int) $atts['id_category'];
-
         $currentPage = (int) ($_GET['page_to_show'] ?? 1);
         $products = Category::getAssociatedProducts($idCategory, $currentPage);
-        $totPages = CategoryProduct::getTotNumPagesProductsAssociatedToCategory($idCategory);
-        $isLastPage = $currentPage === $totPages;
-        $isFirstPage = $currentPage === 1;
-        $nameCategory = Category::getTitleByIdCategory($idCategory);
 
-        include GM_PV__PLUGIN_DIR.'views/front/front-list-products-view.php';
+        if (count($products) > 0) {
+            $totPages = CategoryProduct::getTotNumPagesProductsAssociatedToCategory($idCategory);
+            $isLastPage = $currentPage === $totPages;
+            $isFirstPage = $currentPage === 1;
+            $nameCategory = Category::getTitleByIdCategory($idCategory);
+
+            include GM_PV__PLUGIN_DIR.'views/front/front-list-products-view.php';
+        }
     }
 }
