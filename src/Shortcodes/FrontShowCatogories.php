@@ -27,7 +27,7 @@ class FrontShowCatogories
 
         $idCategory = (int) $atts['id_category'];
 
-        $currentPage = (int) $_GET['page_to_show'] ?? 1;
+        $currentPage = (int) ($_GET['page_to_show'] ?? 1);
         $products = Category::getAssociatedProducts($idCategory, $currentPage);
         $totPages = CategoryProduct::getTotNumPagesProductsAssociatedToCategory($idCategory);
         $isLastPage = $currentPage === $totPages;
