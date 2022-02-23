@@ -85,6 +85,13 @@ class AdminMedia
             ],
             'in_footer' => false,
         ],
+        '/wp-content/plugins/gm-productvideo/assets/js/admin/copy-shortcode.js' => [
+            'name' => 'copy-shortcode',
+            'pages' => [
+                PARENT_SLUG_ADMIN_TAB . '-pv-show-categoriesvideo',
+            ],
+            'in_footer' => false,
+        ],
         /* multiselect
         '/wp-content/plugins/gm-productvideo/assets/js/multiselect/bootstrap.min.js' => [
             'name' => 'multiselect_js',

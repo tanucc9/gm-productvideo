@@ -4,6 +4,7 @@ namespace GMProductVideo\Utilities;
 
 use GMProductVideo\Model\Category;
 use GMProductVideo\Model\Product;
+use GMProductVideo\Shortcodes\FrontShowCatogories;
 
 if (!class_exists('WP_List_Table')) {
     require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
@@ -45,6 +46,7 @@ class AdminListCategories extends CustomAdminListTable
                 $this->items[] = [
                     'id' => $cat->id,
                     'title_category' => $cat->title_category,
+                    'shortcode' => '[' . FrontShowCatogories::$shortcodeName . ' id_category=' . $cat->id .']',
                 ];
             }
 
@@ -61,6 +63,7 @@ class AdminListCategories extends CustomAdminListTable
             'cb' => '',
             'id' => 'ID',
             'title_category' => 'Title Category',
+            'shortcode' => 'Shortcode',
         );
 
         return $columns;
@@ -71,6 +74,7 @@ class AdminListCategories extends CustomAdminListTable
         switch ($column_name) {
             case 'id':
             case 'title_category':
+            case 'shortcode':
                 return $item[$column_name];
             default:
                 return print_r($item, true) ; //Show the whole array for troubleshooting purposes
@@ -81,10 +85,19 @@ class AdminListCategories extends CustomAdminListTable
     {
         $sortable_columns = array(
             'id' => array('id_category', false),
-            'title_product'  => array('title_category', false),
+            'title_category'  => array('title_category', false),
         );
 
         return $sortable_columns;
+    }
+
+    public function column_shortcode($item): string
+    {
+        $actions = array(
+            'copy_shortcode' => sprintf('<a style="color: #007bff; cursor: pointer" id="copy_shortcode" data-shortcode="' . $item['shortcode'] .'">Copy shortcode</a>'),
+        );
+
+        return sprintf('%1$s %2$s', $item['shortcode'], $this->row_actions($actions));
     }
 }
 

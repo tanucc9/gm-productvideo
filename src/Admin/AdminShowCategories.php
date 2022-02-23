@@ -16,7 +16,7 @@ use GMProductVideo\Utilities\CustomAdminListTable;
 
 class AdminShowCategories
 {
-    public static $menuSlag = PARENT_SLUG_ADMIN_TAB.'-pv-show-categoriesvideo';
+    public static $menuSlag = PARENT_SLUG_ADMIN_TAB . '-pv-show-categoriesvideo';
 
     public function __construct()
     {
