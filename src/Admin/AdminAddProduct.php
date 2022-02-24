@@ -13,7 +13,7 @@ use GMProductVideo\Model\Product;
 
 class AdminAddProduct
 {
-    public static $menuSlag = PARENT_SLUG_ADMIN_TAB.'-pv-add-productvideo';
+    public static $menuSlag = PARENT_SLUG_ADMIN_TAB . '-pv-add-productvideo';
 
     public function __construct()
     {

@@ -92,6 +92,14 @@ class AdminMedia
             ],
             'in_footer' => false,
         ],
+        '/wp-content/plugins/gm-productvideo/assets/js/admin/validation.js' => [
+            'name' => 'validation',
+            'pages' => [
+                PARENT_SLUG_ADMIN_TAB . '-pv-add-productvideo',
+                PARENT_SLUG_ADMIN_TAB . '-pv-show-productsvideo',
+            ],
+            'in_footer' => false,
+        ],
         /* multiselect
         '/wp-content/plugins/gm-productvideo/assets/js/multiselect/bootstrap.min.js' => [
             'name' => 'multiselect_js',

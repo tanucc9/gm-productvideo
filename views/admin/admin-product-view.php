@@ -7,7 +7,7 @@
     ?>
 
     <div class="wrapper-<?php echo $action ?? '' ?>-form">
-        <form method="get">
+        <form method="get" id="product_form">
             <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
             <input type="hidden" name="action" value="<?php echo $action ?? ''?>">
 
@@ -43,6 +43,7 @@
                             placeholder="URL Video"
                             name="url_video"
                             required
+                            id="url_video"
                             <?php if (isset($prod)) { ?>
                                 value="<?php echo $prod->url_video ?>"
                             <?php } ?>
