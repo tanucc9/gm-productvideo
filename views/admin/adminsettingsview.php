@@ -15,16 +15,35 @@ include(GM_PV__PLUGIN_DIR . 'views/parts/alert_ajax.php');
         </label>
 
         <label>Show static description product
-            <input type="checkbox" name="show_static_content" id="gm_pv_show_static_content"/>
+            <input
+                    type="checkbox"
+                    name="show_static_content"
+                    id="gm_pv_show_static_content"
+                    <?php if (isset($hasShowStatiContent) && $hasShowStatiContent) { ?>
+                    checked
+                    <?php } ?>
+            />
         </label>
 
         <div id="gm_pv_urls_static_content">
             <label>Instagram URL where you want to redirect*
-                <input type="text" name="instagram_url" value="" id="gm_pv_instagram_url"/>
+                <input
+                        type="text"
+                        name="instagram_url"
+                        <?php if (isset($urlInsta) && $urlInsta) { ?>
+                            value="<?php echo $urlInsta ?>"
+                        <?php } ?>
+                        id="gm_pv_instagram_url"/>
             </label>
 
             <label>Facebook URL where you want to redirect*
-                <input type="text" name="facebook_url" value="" id="gm_pv_facebook_url"/>
+                <input
+                        type="text"
+                        name="facebook_url"
+                        <?php if (isset($urlFb) && $urlFb) { ?>
+                            value="<?php echo $urlFb ?>"
+                        <?php } ?>
+                        id="gm_pv_facebook_url"/>
             </label>
         </div>
 

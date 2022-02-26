@@ -11,6 +11,9 @@ include(ABSPATH . 'wp-content/plugins/gm-productvideo/config/defines.php');
 class AdminSettings
 {
     public static $optionHtmlStaticDescription = 'gm_pv_html_static_description';
+    public static $optionShowStaticContent = 'gm_pv_show_static_content';
+    public static $optionUrlFb = 'gm_pv_url_fb';
+    public static $optionUrlInsta = 'gm_pv_url_insta';
 
     public function __construct()
     {
@@ -41,6 +44,10 @@ class AdminSettings
         }
 
         $htmlStaticDescriptionVal = get_option(self::$optionHtmlStaticDescription);
+        $hasShowStatiContent = (bool)get_option(self::$optionShowStaticContent);
+        $urlInsta = get_option(self::$optionUrlInsta);
+        $urlFb = get_option(self::$optionUrlFb);
+        
         $titleHeader = 'Settings GM Products';
         $textSubmitBtn = 'Save';
 
