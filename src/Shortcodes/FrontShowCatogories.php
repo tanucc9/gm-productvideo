@@ -6,6 +6,7 @@ defined('ABSPATH') or exit('access denied.');
 
 include ABSPATH.'wp-content/plugins/gm-productvideo/config/defines.php';
 
+use GMProductVideo\Admin\AdminSettings;
 use GMProductVideo\Logs\Log;
 use GMProductVideo\Model\Category;
 use GMProductVideo\Model\CategoryProduct;
@@ -34,6 +35,13 @@ class FrontShowCatogories
             $isLastPage = $currentPage === $totPages;
             $isFirstPage = $currentPage === 1;
             $nameCategory = Category::getTitleByIdCategory($idCategory);
+
+            //options
+            $hasShowStaticContent = (bool)get_option(AdminSettings::$optionShowStaticContent);
+            if ($hasShowStaticContent) {
+                $urlFb = get_option(AdminSettings::$optionUrlFb);
+                $urlInsta = get_option(AdminSettings::$optionUrlInsta);
+            }
 
             include GM_PV__PLUGIN_DIR.'views/front/front-list-products-view.php';
         }

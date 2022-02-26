@@ -27,15 +27,17 @@
                         <div class="gm_pv_extra_content">
 
                         </div>
+                        <?php if (isset($hasShowStaticContent) && $hasShowStaticContent) { ?>
                         <div class="gm_pv_description">
                             <p>Per info e prezzi:</p>
-                            <a href="http://m.me/fireworksbrothersmauro" target="_blank">
+                            <a href="<?php echo $urlFb ?? '#' ?>" target="_blank">
                                 <img src="<?php echo get_site_url() ?>/wp-content/plugins/gm-productvideo/assets/img/facebook-icon.png" />
                             </a>
-                            <a href="https://instagram.com/maurofireworks3g?utm_medium=copy_link" target="_blank">
+                            <a href="<?php echo $urlInsta ?? '#' ?>" target="_blank">
                                 <img src="<?php echo get_site_url() ?>/wp-content/plugins/gm-productvideo/assets/img/insta-icon.png" />
                             </a>
                         </div>
+                        <?php } ?>
                     </div>
                 </div>
             <?php }
