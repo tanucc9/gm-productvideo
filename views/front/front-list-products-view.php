@@ -24,6 +24,9 @@
                         <div class="gm_pv_container_title">
                             <h4><?php echo $product->title_product ?></h4>
                         </div>
+                        <div class="gm_pv_extra_content">
+
+                        </div>
                         <div class="gm_pv_description">
                             <p>Per info e prezzi:</p>
                             <a href="http://m.me/fireworksbrothersmauro" target="_blank">

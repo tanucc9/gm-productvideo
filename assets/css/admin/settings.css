@@ -9,3 +9,8 @@ label textarea {
 .gm_pv_wrap_submit {
     width: 80%;
 }
+
+#gm_pv_urls_static_content {
+    margin-left: 20px;
+    display: none;
+}

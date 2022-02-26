@@ -100,6 +100,13 @@ class AdminMedia
             ],
             'in_footer' => false,
         ],
+        '/wp-content/plugins/gm-productvideo/assets/js/admin/settings.js' => [
+            'name' => 'settings',
+            'pages' => [
+                PARENT_SLUG_ADMIN_TAB,
+            ],
+            'in_footer' => false,
+        ],
         /* multiselect
         '/wp-content/plugins/gm-productvideo/assets/js/multiselect/bootstrap.min.js' => [
             'name' => 'multiselect_js',
