@@ -24,6 +24,15 @@
                         <div class="gm_pv_container_title">
                             <h4><?php echo $product->title_product ?></h4>
                         </div>
+                        <div class="gm_pv_description">
+                            <p>Per info e prezzi:</p>
+                            <a href="http://m.me/fireworksbrothersmauro" target="_blank">
+                                <img src="<?php echo get_site_url() ?>/wp-content/plugins/gm-productvideo/assets/img/facebook-icon.png" />
+                            </a>
+                            <a href="https://instagram.com/maurofireworks3g?utm_medium=copy_link" target="_blank">
+                                <img src="<?php echo get_site_url() ?>/wp-content/plugins/gm-productvideo/assets/img/insta-icon.png" />
+                            </a>
+                        </div>
                     </div>
                 </div>
             <?php }

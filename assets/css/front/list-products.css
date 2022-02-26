@@ -12,6 +12,18 @@
 .gm_pv_product {
     width: 30%;
     margin-bottom: 50px;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    box-shadow: 0 0 0 rgba(0,0,0,.25);
+    transform: scale(1);
+    transition: transform 500ms, box-shadow 500ms, border 500ms;
+}
+
+.gm_pv_product:hover {
+    border: 1px solid lightgrey;
+    transform: scale(1.1);
+    box-shadow: 0 5px 20px rgba(0,0,0,.25);
 }
 
 .gm_pv_container_title {
@@ -27,6 +39,7 @@
     height: 250px;
     background-position: center!important;
     background-size: cover!important;
+    border-radius: 5px;
 }
 
 .gm_pv_preview_video {
@@ -45,10 +58,41 @@
 .gm_pv_container_video iframe {
     width: 100%;
     height: 100%;
+    border-radius: 5px;
 }
 
 .gm_pv_header {
     margin-bottom: 15px;
+}
+
+.gm_pv_description {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.gm_pv_product:hover .gm_pv_description {
+    visibility: visible;
+    opacity:100%;
+    transition:opacity 1s;
+}
+
+.gm_pv_description p {
+    width: auto;
+    font-size: 16px;
+    height: fit-content;
+    margin-right: 10px;
+}
+
+.gm_pv_description a {
+    margin-right: 5px;
+}
+
+.gm_pv_description img {
+    width: 35px;
 }
 
 @media (max-width: 1300px) {
