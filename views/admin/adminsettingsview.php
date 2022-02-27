@@ -10,10 +10,6 @@ include(GM_PV__PLUGIN_DIR . 'views/parts/alert_ajax.php');
         <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
         <input type="hidden" name="action" value="update_settings" />
 
-        <label>HTML Static Description (leave empty if you don't want a description)
-            <textarea rows="5" name="html_static_description" placeholder="<p>Add here you html...</p>"><?php if (isset($htmlStaticDescriptionVal) && $htmlStaticDescriptionVal) { echo $htmlStaticDescriptionVal; } ?></textarea>
-        </label>
-
         <label>Show static description product
             <input
                     type="checkbox"

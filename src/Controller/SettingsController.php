@@ -7,15 +7,10 @@ use GMProductVideo\Admin\AdminSettings;
 class SettingsController
 {
     public static function processSettings(
-        $html_description = '',
         $hasShowStaticContent = null,
         $urlInsta = '',
         $urlFacebook = ''
     ) {
-        if (empty($html_description) && isset($_GET['html_static_description'])) {
-            $html_description = $_GET['html_static_description'];
-        }
-
         if (!isset($hasShowStaticContent) && isset($_GET['show_static_content'])) {
             $hasShowStaticContent = true;
         } elseif (!isset($hasShowStaticContent) && !isset($_GET['show_static_content'])) {
@@ -50,13 +45,7 @@ class SettingsController
             $resHasShowStaticContent = false;
         }
 
-        if (isset($html_description)) {
-            $resHtmlDesc = update_option(AdminSettings::$optionHtmlStaticDescription, $html_description);
-        } else {
-            $resHtmlDesc = false;
-        }
         if (
-            $resHtmlDesc ||
             $resHasShowStaticContent ||
             (isset($resUrlFb) && $resUrlFb) ||
             (isset($resUrlInsta) && $resUrlInsta)
