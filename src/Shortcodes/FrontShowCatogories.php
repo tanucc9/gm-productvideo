@@ -41,6 +41,20 @@ class FrontShowCatogories
             if ($hasShowStaticContent) {
                 $urlFb = get_option(AdminSettings::$optionUrlFb);
                 $urlInsta = get_option(AdminSettings::$optionUrlInsta);
+
+                if ($urlFb && $urlInsta) {
+                    $extraContent = '<div class="gm_pv_description">
+                            <p>Per info e prezzi:</p>
+                            <a href="' . $urlFb . '" target="_blank">
+<img src="' . get_site_url() . '/wp-content/plugins/gm-productvideo/assets/img/facebook-icon.png" />
+</a>
+<a href="' . $urlInsta . '" target="_blank">
+    <img src="' . get_site_url() . '/wp-content/plugins/gm-productvideo/assets/img/insta-icon.png" />
+</a>
+</div>';
+
+                    $extraContent = apply_filters("gm_pv_edit_static_content", $extraContent);
+                }
             }
 
             include GM_PV__PLUGIN_DIR.'views/front/front-list-products-view.php';

@@ -25,19 +25,8 @@
                             <h4><?php echo $product->title_product ?></h4>
                         </div>
                         <div class="gm_pv_extra_content">
-
+                            <?php if (isset($extraContent)) { echo $extraContent; } ?>
                         </div>
-                        <?php if (isset($hasShowStaticContent) && $hasShowStaticContent) { ?>
-                        <div class="gm_pv_description">
-                            <p>Per info e prezzi:</p>
-                            <a href="<?php echo $urlFb ?? '#' ?>" target="_blank">
-                                <img src="<?php echo get_site_url() ?>/wp-content/plugins/gm-productvideo/assets/img/facebook-icon.png" />
-                            </a>
-                            <a href="<?php echo $urlInsta ?? '#' ?>" target="_blank">
-                                <img src="<?php echo get_site_url() ?>/wp-content/plugins/gm-productvideo/assets/img/insta-icon.png" />
-                            </a>
-                        </div>
-                        <?php } ?>
                     </div>
                 </div>
             <?php }
