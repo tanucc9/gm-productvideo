@@ -40,19 +40,3 @@ function uninstallPlugin() {
 }
 register_deactivation_hook( __FILE__, 'uninstallPlugin' );
 */
-
-
-add_shortcode('njengah_contact_form', 'render_njengah_contact_form');
-function render_njengah_contact_form() { ?>
-    <form>
-        First name:<br>
-        <input type="text" name="firstname" value="Joe ">
-        <br>
-        Last name:<br>
-        <input type="text" name="lastname" value="Njenga">
-        <br>
-        <input type="submit" value="Send">
-    </form>
-    <?php
-
-}
