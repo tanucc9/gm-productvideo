@@ -94,7 +94,7 @@ class AdminListCategories extends CustomAdminListTable
     public function column_shortcode($item): string
     {
         $actions = array(
-            'copy_shortcode' => sprintf('<a style="color: #007bff; cursor: pointer" id="copy_shortcode" data-shortcode="' . $item['shortcode'] .'">Copy shortcode</a>'),
+            'copy_shortcode' => sprintf('<a style="color: #007bff; cursor: pointer" class="copy_shortcode" data-shortcode="' . $item['shortcode'] .'">Copy shortcode</a>'),
         );
 
         return sprintf('%1$s %2$s', $item['shortcode'], $this->row_actions($actions));
