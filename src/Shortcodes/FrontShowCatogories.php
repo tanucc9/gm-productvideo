@@ -57,7 +57,10 @@ class FrontShowCatogories
                 }
             }
 
+            ob_start();
             include GM_PV__PLUGIN_DIR.'views/front/front-list-products-view.php';
+            $output = ob_get_clean();
+            return $output;
         }
     }
 }
