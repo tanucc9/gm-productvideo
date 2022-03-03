@@ -60,12 +60,12 @@ class EditCategoryController
         if (!$hasError) {
             return [
                 'alertType' => 'success',
-                'alertMessage' => 'Product ' . $idProd . ' updated'
+                'alertMessage' => 'Category ' . $idProd . ' updated'
             ];
         } else {
             return [
                 'alertType' => 'danger',
-                'alertMessage' => 'Product not updated. There was an error'
+                'alertMessage' => 'Category not updated. There was an error'
             ];
         }
     }
