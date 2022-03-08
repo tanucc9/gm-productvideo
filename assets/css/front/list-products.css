@@ -108,11 +108,27 @@
 }
 
 @media (max-width: 767px) {
-    .gm_pv_product {
-        width: 100%;
-    }
-
     .gm_pv_container_list_products {
         padding: 0 30px;
+    }
+
+    .gm_pv_product {
+        width: 100%;
+        transform: unset;
+        transition: unset;
+        margin-bottom: 0;
+    }
+
+    .gm_pv_product:hover .gm_pv_description,
+    .gm_pv_description {
+        visibility: visible;
+        opacity:100%;
+        transition:unset;
+    }
+
+    .gm_pv_product:hover {
+        border: unset;
+        transform: unset;
+        box-shadow: unset;
     }
 }
