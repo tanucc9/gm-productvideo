@@ -95,7 +95,7 @@
 }
 
 .gm_pv_description a {
-    margin-right: 5px;
+    margin-right: 2px;
 }
 
 .gm_pv_description img {
@@ -109,6 +109,7 @@
 .gm_pv_extra_content {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .gm_pv_count_likes_container {
@@ -124,6 +125,7 @@
 
 .gm_pv_count_likes_container .dashicons {
     font-size: 18px;
+    transition: color .5s ease-in;
 }
 
 .gm_pv_count_likes_container p {
@@ -131,9 +133,21 @@
     color: #0c71c3;
 }
 
+.gm_pv_text_count_likes.mobile {
+    display: none;
+}
+
 @media (max-width: 1300px) {
     .gm_pv_container_list_products {
         padding: 0 50px;
+    }
+
+    .gm_pv_text_count_likes.desktop {
+        display: none;
+    }
+
+    .gm_pv_text_count_likes.mobile {
+        display: flex;
     }
 }
 

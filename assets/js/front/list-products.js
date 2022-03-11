@@ -20,7 +20,8 @@ jQuery(document).ready(function() {
                         likeElem.attr('data-status', 'checked');
                         likeElem.find('span').css('color', '#0c71c3');
                         const newCountLikes = parseInt(likeElem.find('.gm_pv_count_likes').text()) + 1;
-                        likeElem.find('p').text('Piaciuto! | ' + newCountLikes);
+                        likeElem.find('.gm_pv_text_count_likes.desktop p').text('Piaciuto! | ' + newCountLikes);
+                        likeElem.find('.gm_pv_count_likes_mobile').text(newCountLikes);
                     }
                 }
             });

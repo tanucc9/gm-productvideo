@@ -59,12 +59,12 @@ class FrontShowCatogories
                 if ($urlFb && $urlInsta) {
                     $extraContent = '<div class="gm_pv_description">
                             <p>Per info e prezzi:</p>
-                            <a href="' . $urlFb . '" target="_blank">
+                            <div class="gm_pv_container_icons_social"><a href="' . $urlFb . '" target="_blank">
 <img src="' . get_site_url() . '/wp-content/plugins/gm-productvideo/assets/img/facebook-icon.png" />
 </a>
 <a href="' . $urlInsta . '" target="_blank">
     <img src="' . get_site_url() . '/wp-content/plugins/gm-productvideo/assets/img/insta-icon.png" />
-</a>
+</a></div>
 </div>';
 
                     $extraContent = apply_filters("gm_pv_edit_static_content", $extraContent);
