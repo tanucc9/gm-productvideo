@@ -11,7 +11,7 @@ class AddCategoryController
     public static function addCategory(
         $titleCat = null,
         $products = null
-    ) {
+    ): array {
         if (!isset($titleCat) && isset($_GET['name_category'])) {
             $titleCat = $_GET['name_category'];
         }
@@ -20,45 +20,39 @@ class AddCategoryController
             $products = $_GET['products_select'];
         }
 
+        $hasError = false;
+
         if (!isset($titleCat)) {
-            self::forwardResponse('error');
+            $hasError = true;
         }
 
         $catObj = new Category();
-
         $catObj->title_category = $titleCat;
 
-        if (($idCat = Category::addCategory($catObj)) !== false) {
+        if (($idCat = Category::addCategory($catObj)) !== false && !$hasError) {
             if (!empty($products)) {
                 $catObj->id = (int)$idCat;
                 foreach ($products as $prod) {
                     $catProdObj = new CategoryProduct((int)$prod, $catObj->id);
                     if (CategoryProduct::addCategoryProduct($catProdObj) === false) {
-                        self::forwardResponse('error');
+                        $hasError = true;
                     }
                 }
             }
-
-            self::forwardResponse('success');
+        } else {
+            $hasError = true;
         }
 
-        self::forwardResponse('error');
-    }
-
-    protected static function forwardResponse($result)
-    {
-        $url = get_site_url().'/wp-admin/admin.php?page=' . AdminShowCategories::$menuSlag;
-        $parameters = '';
-
-        if ('success' == $result) {
-            //parameters to send
-            $parameters = '&type_alert=success&message_alert=The new category was successfully added.';
-
-        } elseif ('error' == $result) {
-            $parameters = '&type_alert=danger&message_alert=There was an error. Try again to add the category.';
+        if (!$hasError) {
+            return [
+                'alertType' => 'success',
+                'alertMessage' => 'Category ' . $titleCat . ' added'
+            ];
+        } else {
+            return [
+                'alertType' => 'danger',
+                'alertMessage' => 'Category not added. There was an error'
+            ];
         }
-
-        wp_safe_redirect($url . $parameters);
-        exit();
     }
 }

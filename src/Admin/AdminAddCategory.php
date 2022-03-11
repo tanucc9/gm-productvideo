@@ -37,12 +37,9 @@ class AdminAddCategory
     public function admin_page_content_addCategory()
     {
         if (isset($_GET['action']) && 'add_category' === $_GET['action']) {
-            AddCategoryController::addCategory();
-        }
-
-        if (isset($_GET['type_alert'])) {
-            $alertType = $_GET['type_alert'];
-            $alertMessage = $_GET['message_alert'];
+            $alerts = AddCategoryController::addCategory();
+            $alertType = $alerts['alertType'];
+            $alertMessage = $alerts['alertMessage'];
         }
 
         // vars admin header
