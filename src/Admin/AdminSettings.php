@@ -13,6 +13,7 @@ class AdminSettings
     public static $optionShowStaticContent = 'gm_pv_show_static_content';
     public static $optionUrlFb = 'gm_pv_url_fb';
     public static $optionUrlInsta = 'gm_pv_url_insta';
+    public static $optionTitleMostLikedProd = 'gm_pv_title_most_liked_prod';
 
     public function __construct()
     {
@@ -45,6 +46,7 @@ class AdminSettings
         $hasShowStatiContent = (bool)get_option(self::$optionShowStaticContent);
         $urlInsta = get_option(self::$optionUrlInsta);
         $urlFb = get_option(self::$optionUrlFb);
+        $titleMostLiked = get_option(self::$optionTitleMostLikedProd);
         
         $titleHeader = 'Settings GM Products';
         $textSubmitBtn = 'Save';

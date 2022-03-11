@@ -9,6 +9,17 @@ include(GM_PV__PLUGIN_DIR . 'views/parts/alert.php');
         <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
         <input type="hidden" name="action" value="update_settings" />
 
+        <label>Title most liked products
+            <input
+                    type="text"
+                    name="most_liked_prod_title"
+                    placeholder="Insert title here..."
+                    <?php if (isset($titleMostLiked)) { ?>
+                    value = "<?php echo $titleMostLiked; ?>"
+                    <?php } ?>
+                    id="gm_pv_title_most_liked_prod"/>
+        </label>
+
         <label>Show static description product
             <input
                     type="checkbox"

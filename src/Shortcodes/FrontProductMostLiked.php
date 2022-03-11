@@ -32,7 +32,7 @@ class FrontProductMostLiked
 
         if (count($products) > 0) {
 
-            $nameCategory = 'Made in Italy';
+            $nameCategory = get_option(AdminSettings::$optionTitleMostLikedProd) ?? '';
 
             //options
             $hasShowStaticContent = (bool)get_option(AdminSettings::$optionShowStaticContent);

@@ -9,7 +9,8 @@ class SettingsController
     public static function processSettings(
         $hasShowStaticContent = null,
         $urlInsta = '',
-        $urlFacebook = ''
+        $urlFacebook = '',
+        $titleMostLiked = ''
     ) {
         if (!isset($hasShowStaticContent) && isset($_GET['show_static_content'])) {
             $hasShowStaticContent = true;
@@ -45,8 +46,19 @@ class SettingsController
             $resHasShowStaticContent = false;
         }
 
+        if (empty($titleMostLiked) && isset($_GET['most_liked_prod_title'])) {
+            $titleMostLiked = $_GET['most_liked_prod_title'];
+        }
+
+        $resTitleMostLiked = false;
+        if (!empty($titleMostLiked)) {
+            $resTitleMostLiked = update_option(AdminSettings::$optionTitleMostLikedProd, $titleMostLiked);
+        }
+
+
         if (
             $resHasShowStaticContent ||
+            $resTitleMostLiked ||
             (isset($resUrlFb) && $resUrlFb) ||
             (isset($resUrlInsta) && $resUrlInsta)
         ) {
