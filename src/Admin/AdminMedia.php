@@ -34,33 +34,6 @@ class AdminMedia
                 PARENT_SLUG_ADMIN_TAB . '-pv-show-categoriesvideo',
             ],
         ],
-        /* multiselect
-        '/wp-content/plugins/gm-productvideo/assets/css/multiselect/bootstrap.min.css' => [
-            'name' => 'multiselect_css_1',
-            'pages' =>  [
-                PARENT_SLUG_ADMIN_TAB.'-pv-add-productvideo',
-            ],
-        ],
-        '/wp-content/plugins/gm-productvideo/assets/css/multiselect/jquery.multiselect.css' => [
-            'name' => 'multiselect_css_2',
-            'pages' =>  [
-                PARENT_SLUG_ADMIN_TAB.'-pv-add-productvideo',
-            ],
-        ],
-        '/wp-content/plugins/gm-productvideo/assets/css/multiselect/multiselect.css' => [
-            'name' => 'multiselect_css_3',
-            'pages' =>  [
-                PARENT_SLUG_ADMIN_TAB.'-pv-add-productvideo',
-            ],
-        ],
-        '/wp-content/plugins/gm-productvideo/assets/css/multiselect/owl.carousel.min.css' => [
-            'name' => 'multiselect_css_4',
-            'pages' =>  [
-                PARENT_SLUG_ADMIN_TAB.'-pv-add-productvideo',
-            ],
-        ],
-        /* End multiselect */
-
         '/wp-content/plugins/gm-productvideo/assets/css/admin/showproducts.css' => [
             'name' => 'showproducts_css',
             'pages' =>  [
@@ -107,56 +80,6 @@ class AdminMedia
             ],
             'in_footer' => false,
         ],
-        /* multiselect
-        '/wp-content/plugins/gm-productvideo/assets/js/multiselect/bootstrap.min.js' => [
-            'name' => 'multiselect_js',
-            'localize_script' => false,
-            'pages' => [
-                PARENT_SLUG_ADMIN_TAB.'-pv-add-productvideo',
-            ],
-            'in_footer' => true,
-        ],
-        '/wp-content/plugins/gm-productvideo/assets/js/multiselect/jquery.multiselect.js' => [
-            'name' => 'multiselect_js_2',
-            'localize_script' => false,
-            'pages' => [
-                PARENT_SLUG_ADMIN_TAB.'-pv-add-productvideo',
-            ],
-            'in_footer' => true,
-        ],
-        '/wp-content/plugins/gm-productvideo/assets/js/multiselect/jquery-3.3.1.min.js' => [
-            'name' => 'multiselect_js_3',
-            'localize_script' => false,
-            'pages' => [
-                PARENT_SLUG_ADMIN_TAB.'-pv-add-productvideo',
-            ],
-            'in_footer' => true,
-        ],
-        '/wp-content/plugins/gm-productvideo/assets/js/multiselect/main.js' => [
-            'name' => 'multiselect_js_4',
-            'localize_script' => false,
-            'pages' => [
-                PARENT_SLUG_ADMIN_TAB.'-pv-add-productvideo',
-            ],
-            'in_footer' => true,
-        ],
-        '/wp-content/plugins/gm-productvideo/assets/js/multiselect/owl.carousel.min.js' => [
-            'name' => 'multiselect_js_5',
-            'localize_script' => false,
-            'pages' => [
-                PARENT_SLUG_ADMIN_TAB.'-pv-add-productvideo',
-            ],
-            'in_footer' => true,
-        ],
-        '/wp-content/plugins/gm-productvideo/assets/js/multiselect/popper.min.js' => [
-            'name' => 'multiselect_js_6',
-            'localize_script' => false,
-            'pages' => [
-                PARENT_SLUG_ADMIN_TAB.'-pv-add-productvideo',
-            ],
-            'in_footer' => true,
-        ],
-        /* End multiselect */
     ];
 
     public function __construct()
@@ -233,7 +156,7 @@ class AdminMedia
             if (in_array($current_page, $script['pages'])) {
                 wp_register_script($script['name'], $path, [], false, $script['in_footer']);
                 wp_enqueue_script($script['name']);
-                if ($script['localize']) {
+                if ($script['localize_script']) {
                     $this->doLocalizeScript($script['name']);
                 }
             }
