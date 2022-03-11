@@ -9,7 +9,7 @@ if (!class_exists('WP_List_Table')) {
 abstract class CustomAdminListTable extends \WP_List_Table
 {
     protected $orderBy;
-    protected $orderWay = 'asc';
+    protected $orderWay = 'desc';
 
     protected function setSortElements()
     {
