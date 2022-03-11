@@ -2,9 +2,6 @@
 
 namespace GMProductVideo;
 
-use GMProductVideo\Controller\DeleteProductAjaxController;
-use GMProductVideo\Controller\EditProductAjaxController;
-
 class LoadHooks
 {
     public function __construct()
@@ -16,7 +13,7 @@ class LoadHooks
         new \GMProductVideo\Admin\AdminShowCategories();
         new \GMProductVideo\Admin\AdminAddCategory();
         new \GMProductVideo\Shortcodes\FrontShowCatogories();
-        new EditProductAjaxController();
-        new DeleteProductAjaxController();
+        new \GMProductVideo\Front\FrontMedia();
+        new \GMProductVideo\Controller\CountLikesProductAjaxController();
     }
 }

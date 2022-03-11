@@ -175,6 +175,28 @@ class Product
         return 0;
     }
 
+    public static function incrementLikesById(int $idProd): bool
+    {
+        if (!isset($idProd)) {
+            return false;
+        }
+
+        global $wpdb;
+        $table = $wpdb->prefix.self::$name_table;
+        $sql = 'UPDATE ' . $table . ' 
+                SET count_likes = count_likes + 1 
+                WHERE id_product = ' . $idProd;
+
+        $result = $wpdb->query(
+            $wpdb->prepare($sql)
+        );
+
+        if (!empty($result) && count($result) > 0) {
+            return true;
+        }
+        return false;
+    }
+
     public static function getNumProducts(): int
     {
         global $wpdb;
