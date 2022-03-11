@@ -68,21 +68,25 @@
 .gm_pv_description {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
-    visibility: hidden;
-    opacity: 0;
+    flex: 60%;
 }
 
-.gm_pv_product:hover .gm_pv_description {
+.gm_pv_product:hover .gm_pv_description,
+.gm_pv_product:hover .gm_pv_count_likes_container {
     visibility: visible;
     opacity:100%;
     transition:opacity 1s;
 }
 
+.gm_pv_description, .gm_pv_count_likes_container {
+    visibility: hidden;
+    opacity: 0;
+}
+
 .gm_pv_description p {
     width: auto;
-    font-size: 16px;
+    font-size: 14px;
     height: fit-content;
     margin-right: 10px;
 }
@@ -92,12 +96,39 @@
 }
 
 .gm_pv_description img {
-    width: 35px;
+    width: 25px;
 }
 
 .gm_pv_title_mobile {
     display: none;
 }
+
+.gm_pv_extra_content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.gm_pv_count_likes_container {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    border: 1px solid #0c71c3;
+    border-radius: 17px;
+    padding: 3px 7px;
+    cursor: pointer;
+    height: fit-content;
+}
+
+.gm_pv_count_likes_container .dashicons {
+    font-size: 18px;
+}
+
+.gm_pv_count_likes_container p {
+    font-size: 12px;
+    color: #0c71c3;
+}
+
+
 
 @media (max-width: 1300px) {
     .gm_pv_container_list_products {

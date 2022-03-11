@@ -154,6 +154,27 @@ class Product
         return null;
     }
 
+    /** Return the number of likes of a product
+     * @param int $idProduct the id of the product
+     * @return int the number of likes
+     */
+    public static function getCountLikesById(int $idProduct): int
+    {
+        global $wpdb;
+
+        $table = $wpdb->prefix.self::$name_table;
+        $sql = 'SELECT count_likes FROM ' . $table . ' WHERE id_product = ' . $idProduct;
+        $result = $wpdb->get_results($sql);
+
+        if (count((array) $result) >= 1) {
+            foreach ($result as $row) {
+                return (int) $row->count_likes;
+            }
+        }
+
+        return 0;
+    }
+
     public static function getNumProducts(): int
     {
         global $wpdb;

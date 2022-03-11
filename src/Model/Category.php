@@ -191,7 +191,13 @@ class Category
         if (count((array) $result) >= 1) {
             $prods = [];
             foreach ($result as $product) {
-                $prodObj = new Product($product->id_product, $product->last_edit, $product->title_product, $product->url_video);
+                $prodObj = new Product(
+                    $product->id_product,
+                    $product->last_edit,
+                    $product->title_product,
+                    $product->url_video,
+                    $product->count_likes
+                );
                 $prods[] = $prodObj;
             }
 

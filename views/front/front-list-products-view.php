@@ -31,6 +31,10 @@
                         </div>
                         <div class="gm_pv_extra_content">
                             <?php if (isset($extraContent)) { echo $extraContent; } ?>
+                            <div class="gm_pv_count_likes_container" data-status="not_clicked">
+                                <span class="dashicons dashicons-heart"></span>
+                                <div class="gm_pv_text_count_likes"><p>Mi piace | <span class="gm_pv_count_likes"><?php echo $product->count_likes ?></span></p></div>
+                            </div>
                         </div>
                     </div>
                 </div>
