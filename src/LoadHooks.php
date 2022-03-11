@@ -13,6 +13,7 @@ class LoadHooks
         new \GMProductVideo\Admin\AdminShowCategories();
         new \GMProductVideo\Admin\AdminAddCategory();
         new \GMProductVideo\Shortcodes\FrontShowCatogories();
+        new \GMProductVideo\Shortcodes\FrontProductMostLiked();
         new \GMProductVideo\Front\FrontMedia();
         new \GMProductVideo\Controller\CountLikesProductAjaxController();
     }
