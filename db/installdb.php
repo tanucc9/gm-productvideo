@@ -32,6 +32,7 @@ class InstallDb
                 last_edit datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
                 title_product varchar(255) NOT NULL,
                 url_video varchar(500) NOT NULL,
+                count_likes MEDIUMINT NOT NULL DEFAULT 0,
                 PRIMARY KEY  (id_product)
                 ) $charset_collate;";
 

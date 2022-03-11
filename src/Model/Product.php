@@ -10,23 +10,31 @@ use GMProductVideo\Logs\Log;
 
 class Product
 {
-    /** @var id id_product */
+    /** id_product */
     public $id;
 
-    /** @var last_edit last product modification */
+    /** last_edit last product modification */
     public $last_edit;
 
-    /** @var title_product title */
+    /** title_product title */
     public $title_product;
 
-    /** @var url video of the product */
+    /** url video of the product */
     public $url_video;
+
+    /** count likes of the product */
+    public $count_likes;
 
     /** @var table's name without prefix wordpress */
     public static $name_table = 'gm_pv_products';
 
-    public function __construct($id = null, $last_edit = null, $title_product = null, $url_video = null)
-    {
+    public function __construct(
+        $id = null,
+        $last_edit = null,
+        $title_product = null,
+        $url_video = null,
+        $count_likes = null
+    ) {
         if (null != $id) {
             $this->id = $id;
         }
@@ -38,6 +46,9 @@ class Product
         }
         if (null != $url_video) {
             $this->url_video = $url_video;
+        }
+        if (null != $count_likes) {
+            $this->count_likes = $count_likes;
         }
     }
 
@@ -103,7 +114,13 @@ class Product
         if (count((array) $result) >= 1) {
             $products = [];
             foreach ($result as $row) {
-                $prod = new Product($row->id_product, $row->last_edit, $row->title_product, $row->url_video);
+                $prod = new Product(
+                    $row->id_product,
+                    $row->last_edit,
+                    $row->title_product,
+                    $row->url_video,
+                    $row->count_likes
+                );
                 array_push($products, $prod);
             }
             Log::doLog($products, 'products');
@@ -124,8 +141,13 @@ class Product
 
         if (count((array) $result) >= 1) {
             foreach ($result as $row) {
-                $prod = new Product($row->id_product, $row->last_edit, $row->title_product, $row->url_video);
-                return $prod;
+                return new Product(
+                    $row->id_product,
+                    $row->last_edit,
+                    $row->title_product,
+                    $row->url_video,
+                    $row->count_likes
+                );
             }
         }
 
