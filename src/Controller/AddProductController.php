@@ -12,7 +12,7 @@ class AddProductController
         $titleProd = null,
         $urlVideo = null,
         $categories = null
-    ) {
+    ): array {
         if (!isset($titleProd) && isset($_GET['name_product'])) {
             $titleProd = $_GET['name_product'];
         }
@@ -25,46 +25,40 @@ class AddProductController
             $categories = $_GET['categories_select'];
         }
 
+        $hasError = false;
+
         if (!isset($urlVideo, $titleProd)) {
-            self::forwardResponse('error');
+            $hasError = true;
         }
 
         $prodObj = new Product();
-
         $prodObj->title_product = $titleProd;
         $prodObj->url_video = $urlVideo;
 
-        if (($idProd = Product::addProduct($prodObj)) !== false) {
+        if (($idProd = Product::addProduct($prodObj)) !== false && !$hasError) {
             if (!empty($categories)) {
                 $prodObj->id = (int)$idProd;
                 foreach ($categories as $cat) {
                     $catProdObj = new CategoryProduct($prodObj->id, (int)$cat);
                     if (CategoryProduct::addCategoryProduct($catProdObj) === false) {
-                        self::forwardResponse('error');
+                        $hasError = true;
                     }
                 }
             }
-
-            self::forwardResponse('success');
+        } else {
+            $hasError = true;
         }
 
-        self::forwardResponse('error');
-    }
-
-    protected static function forwardResponse($result)
-    {
-        $url = get_site_url().'/wp-admin/admin.php?page=' . AdminShowProducts::$menuSlag;
-        $parameters = '';
-
-        if ('success' == $result) {
-            //parameters to send
-            $parameters = '&type_alert=success&message_alert=The new product was successfully added.';
-        } elseif ('error' == $result) {
-            $parameters = '&type_alert=danger&message_alert=There was an error. Try again to add the product.';
+        if (!$hasError) {
+            return [
+                'alertType' => 'success',
+                'alertMessage' => 'Product ' . $titleProd . ' added'
+            ];
+        } else {
+            return [
+                'alertType' => 'danger',
+                'alertMessage' => 'Product not added. There was an error'
+            ];
         }
-
-        wp_safe_redirect($url . $parameters);
-        exit();
-
     }
 }

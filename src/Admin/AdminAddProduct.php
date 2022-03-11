@@ -36,12 +36,9 @@ class AdminAddProduct
     public function admin_page_content_addProduct()
     {
         if (isset($_GET['action']) && 'add_product' == $_GET['action']) {
-            AddProductController::addProduct();
-        }
-
-        if (isset($_GET['type_alert'])) {
-            $alertType = $_GET['type_alert'];
-            $alertMessage = $_GET['message_alert'];
+            $alerts = AddProductController::addProduct();
+            $alertType = $alerts['alertType'];
+            $alertMessage = $alerts['alertMessage'];
         }
 
         // vars admin header
