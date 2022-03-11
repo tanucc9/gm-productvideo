@@ -22,18 +22,32 @@ class FrontShowCatogories
 
     public function showCategories($atts = [], $content = null, $tag = '')
     {
-        if (empty($atts) && isset($atts['id_category'])) {
+        if (empty($atts) || !isset($atts['id_category'])) {
             return '';
         }
 
         $idCategory = (int) $atts['id_category'];
         $currentPage = (int) ($_GET['page_to_show'] ?? 1);
-        $products = Category::getAssociatedProducts($idCategory, $currentPage);
+        $limit = 10;
+
+        if (!empty($atts['preview'])) {
+            $preview = (int) $atts['preview'];
+            $limit = $preview;
+        }
+
+        $products = Category::getAssociatedProducts(
+            $idCategory,
+            $currentPage,
+            $limit
+        );
 
         if (count($products) > 0) {
-            $totPages = CategoryProduct::getTotNumPagesProductsAssociatedToCategory($idCategory);
-            $isLastPage = $currentPage === $totPages;
-            $isFirstPage = $currentPage === 1;
+            if (!isset($preview)) { //Because if it is a preview we don't want to show the pagination
+                $totPages = CategoryProduct::getTotNumPagesProductsAssociatedToCategory($idCategory);
+                $isLastPage = $currentPage === $totPages;
+                $isFirstPage = $currentPage === 1;
+            }
+
             $nameCategory = Category::getTitleByIdCategory($idCategory);
 
             //options

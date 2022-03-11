@@ -95,6 +95,10 @@
     width: 35px;
 }
 
+.gm_pv_title_mobile {
+    display: none;
+}
+
 @media (max-width: 1300px) {
     .gm_pv_container_list_products {
         padding: 0 50px;
@@ -130,5 +134,13 @@
         border: unset;
         transform: unset;
         box-shadow: unset;
+    }
+
+    .gm_pv_title_mobile {
+        display: block;
+    }
+
+    .gm_pv_title_desktop {
+        display: none;
     }
 }

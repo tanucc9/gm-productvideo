@@ -22,7 +22,12 @@
                     </div>
                     <div class="gm_pv_container_info">
                         <div class="gm_pv_container_title">
-                            <h4><?php echo $product->title_product ?></h4>
+                            <?php if (strlen($product->title_product) > 40) { ?>
+                                <h4 class="gm_pv_title_desktop"><?php echo substr($product->title_product, 0, 40) . '...' ?></h4>
+                                <h4 class="gm_pv_title_mobile"><?php echo $product->title_product ?></h4>
+                            <?php } else { ?>
+                                <h4><?php echo $product->title_product ?></h4>
+                            <?php } ?>
                         </div>
                         <div class="gm_pv_extra_content">
                             <?php if (isset($extraContent)) { echo $extraContent; } ?>
