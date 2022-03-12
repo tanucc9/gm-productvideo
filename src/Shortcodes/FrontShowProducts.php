@@ -12,21 +12,38 @@ use GMProductVideo\Model\Category;
 use GMProductVideo\Model\CategoryProduct;
 use GMProductVideo\Model\Product;
 
-class FrontProductMostLiked
+class FrontShowProducts
 {
-    public static $shortcodeName = 'gm_pv_most_liked_products';
+    public static $shortcodeName = 'gm_pv_show_products';
 
     public function __construct()
     {
-        add_shortcode(self::$shortcodeName, [$this, 'mostLikedProducts']);
+        add_shortcode(self::$shortcodeName, [$this, 'showProducts']);
     }
 
-    public function mostLikedProducts()
+    public function showProducts($atts = [], $content = null, $tag = '')
     {
+        if (empty($atts) || !isset($atts['type'])) {
+            return '';
+        }
+
+        $orderBy = 'id_product';
+
+        if ($atts['type'] === 'newest') {
+            $orderBy = 'id_product';
+        } elseif ($atts['type'] === 'most_liked') {
+            $orderBy = 'count_likes';
+        }
+
+        $limit = 9;
+        if (isset($atts['num_products'])) {
+            $limit = (int) $atts['num_products'];
+        }
+
         $products = Product::doRetrieveAll(
             1,
-            9,
-            'count_likes',
+            $limit,
+            $orderBy,
             'desc'
         );
 
