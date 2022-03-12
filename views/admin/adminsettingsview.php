@@ -20,6 +20,17 @@ include(GM_PV__PLUGIN_DIR . 'views/parts/alert.php');
                     id="gm_pv_title_most_liked_prod"/>
         </label>
 
+        <label>Title newest products
+            <input
+                    type="text"
+                    name="newest_prod_title"
+                    placeholder="Insert title here..."
+                <?php if (isset($titleNewestProd)) { ?>
+                    value = "<?php echo $titleNewestProd; ?>"
+                <?php } ?>
+                    id="gm_pv_title_newest_prod"/>
+        </label>
+
         <label>Show static description product
             <input
                     type="checkbox"

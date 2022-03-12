@@ -10,7 +10,8 @@ class SettingsController
         $hasShowStaticContent = null,
         $urlInsta = '',
         $urlFacebook = '',
-        $titleMostLiked = ''
+        $titleMostLiked = '',
+        $titleNewestProd = ''
     ) {
         if (!isset($hasShowStaticContent) && isset($_GET['show_static_content'])) {
             $hasShowStaticContent = true;
@@ -49,14 +50,21 @@ class SettingsController
         if (empty($titleMostLiked) && isset($_GET['most_liked_prod_title'])) {
             $titleMostLiked = $_GET['most_liked_prod_title'];
         }
-
         $resTitleMostLiked = false;
         if (!empty($titleMostLiked)) {
             $resTitleMostLiked = update_option(AdminSettings::$optionTitleMostLikedProd, $titleMostLiked);
         }
 
+        if (empty($titleNewestProd) && isset($_GET['newest_prod_title'])) {
+            $titleNewestProd = $_GET['newest_prod_title'];
+        }
+        $resTitleNewestProd = false;
+        if (!empty($titleNewestProd)) {
+            $resTitleNewestProd = update_option(AdminSettings::$optionTitleNewestProd, $titleNewestProd);
+        }
 
         if (
+            $resTitleNewestProd ||
             $resHasShowStaticContent ||
             $resTitleMostLiked ||
             (isset($resUrlFb) && $resUrlFb) ||

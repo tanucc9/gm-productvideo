@@ -49,7 +49,11 @@ class FrontShowProducts
 
         if (count($products) > 0) {
 
-            $nameCategory = get_option(AdminSettings::$optionTitleMostLikedProd) ?? '';
+            if ($atts['type'] === 'newest') {
+                $nameCategory = get_option(AdminSettings::$optionTitleNewestProd) ?? '';
+            } elseif ($atts['type'] === 'most_liked') {
+                $nameCategory = get_option(AdminSettings::$optionTitleMostLikedProd) ?? '';
+            }
 
             //options
             $hasShowStaticContent = (bool)get_option(AdminSettings::$optionShowStaticContent);
