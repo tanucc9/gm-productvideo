@@ -168,7 +168,7 @@ class Category
         $page,
         $limit = 10,
         $orderBy = 'id_product',
-        $orderWay = 'asc'
+        $orderWay = 'desc'
     ) {
         global $wpdb;
 
