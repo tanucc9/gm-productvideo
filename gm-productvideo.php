@@ -31,13 +31,11 @@ function installPlugin()
 }
 register_activation_hook(__FILE__, 'installPlugin');
 
-/* TODO - Alla fine dei lavori legare la funzione uninstall() all'uninstall hook piuttosto
- * che il deactivate.
+/* uncomment if you want to remove the tables from db when plugin is uninstalled
  *  register_uninstall_hook(__FILE__, 'delete_plugin_database_table');
 
 function uninstallPlugin() {
     UninstallDb::deleteTables();
 }
-register_deactivation_hook( __FILE__, 'uninstallPlugin' );
 */
 
