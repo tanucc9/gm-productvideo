@@ -8,8 +8,6 @@ include ABSPATH.'wp-content/plugins/gm-productvideo/config/defines.php';
 
 use GMProductVideo\Admin\AdminSettings;
 use GMProductVideo\Logs\Log;
-use GMProductVideo\Model\Category;
-use GMProductVideo\Model\CategoryProduct;
 use GMProductVideo\Model\Product;
 
 class FrontShowProducts
@@ -47,7 +45,7 @@ class FrontShowProducts
             'desc'
         );
 
-        if (count($products) > 0) {
+        if (isset($products) && count($products) > 0) {
 
             if ($atts['type'] === 'newest') {
                 $nameCategory = get_option(AdminSettings::$optionTitleNewestProd) ?? '';

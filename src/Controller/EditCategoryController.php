@@ -4,7 +4,6 @@ namespace GMProductVideo\Controller;
 
 use GMProductVideo\Model\Category;
 use GMProductVideo\Model\CategoryProduct;
-use GMProductVideo\Model\Product;
 
 class EditCategoryController
 {

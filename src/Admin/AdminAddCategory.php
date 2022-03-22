@@ -7,9 +7,6 @@ defined('ABSPATH') or exit('access denied.');
 include ABSPATH.'wp-content/plugins/gm-productvideo/config/defines.php';
 
 use GMProductVideo\Controller\AddCategoryController;
-use GMProductVideo\Controller\AddProductController;
-use GMProductVideo\Model\Category;
-use GMProductVideo\Model\CategoryProduct;
 use GMProductVideo\Model\Product;
 
 class AdminAddCategory

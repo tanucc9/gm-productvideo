@@ -8,9 +8,7 @@ include ABSPATH.'wp-content/plugins/gm-productvideo/config/defines.php';
 
 use GMProductVideo\Controller\DeleteProductController;
 use GMProductVideo\Controller\EditProductController;
-use GMProductVideo\Model\Product;
 use GMProductVideo\Utilities\AdminListProducts;
-use GMProductVideo\Utilities\CustomAdminListTable;
 
 class AdminShowProducts
 {

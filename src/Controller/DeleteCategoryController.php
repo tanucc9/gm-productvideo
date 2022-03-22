@@ -3,7 +3,6 @@
 namespace GMProductVideo\Controller;
 
 use GMProductVideo\Model\Category;
-use GMProductVideo\Model\Product;
 
 class DeleteCategoryController
 {

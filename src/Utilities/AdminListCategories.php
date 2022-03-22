@@ -3,7 +3,6 @@
 namespace GMProductVideo\Utilities;
 
 use GMProductVideo\Model\Category;
-use GMProductVideo\Model\Product;
 use GMProductVideo\Shortcodes\FrontShowCatogories;
 
 if (!class_exists('WP_List_Table')) {
@@ -100,4 +99,3 @@ class AdminListCategories extends CustomAdminListTable
         return sprintf('%1$s %2$s', $item['shortcode'], $this->row_actions($actions));
     }
 }
-

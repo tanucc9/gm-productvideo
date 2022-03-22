@@ -2,7 +2,6 @@
 
 namespace GMProductVideo\Controller;
 
-use GMProductVideo\Admin\AdminShowProducts;
 use GMProductVideo\Model\CategoryProduct;
 use GMProductVideo\Model\Product;
 

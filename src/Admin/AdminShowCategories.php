@@ -7,12 +7,8 @@ defined('ABSPATH') or exit('access denied.');
 include ABSPATH.'wp-content/plugins/gm-productvideo/config/defines.php';
 
 use GMProductVideo\Controller\DeleteCategoryController;
-use GMProductVideo\Controller\DeleteProductController;
 use GMProductVideo\Controller\EditCategoryController;
-use GMProductVideo\Controller\EditProductController;
 use GMProductVideo\Utilities\AdminListCategories;
-use GMProductVideo\Utilities\AdminListProducts;
-use GMProductVideo\Utilities\CustomAdminListTable;
 
 class AdminShowCategories
 {
