@@ -18,7 +18,7 @@
                         </div>
                         <style>
                             #gm_pv_container_video_<?php echo $product->id ?> {
-                                background: url(https://img.youtube.com/vi/<?php echo $embedCodeYT ?>/sddefault.jpg);
+                                background: url(https://img.youtube.com/vi/<?php echo $embedCodeYT ?>/mqdefault.jpg);
                             }
                         </style>
                     </div>
