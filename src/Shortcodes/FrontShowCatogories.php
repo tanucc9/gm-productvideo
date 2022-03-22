@@ -41,9 +41,9 @@ class FrontShowCatogories
             $limit
         );
 
-        if (count($products) > 0) {
+        if (isset($products) && count($products) > 0) {
             if (!isset($preview)) { //Because if it is a preview we don't want to show the pagination
-                $totPages = CategoryProduct::getTotNumPagesProductsAssociatedToCategory($idCategory);
+                $totPages = CategoryProduct::getTotNumPagesProductsAssociatedToCategory($idCategory, $limit);
                 $isLastPage = $currentPage === $totPages;
                 $isFirstPage = $currentPage === 1;
             }
