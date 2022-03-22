@@ -28,7 +28,7 @@ class FrontShowCatogories
 
         $idCategory = (int) $atts['id_category'];
         $currentPage = (int) ($_GET['page_to_show'] ?? 1);
-        $limit = 10;
+        $limit = 12;
 
         if (!empty($atts['preview'])) {
             $preview = (int) $atts['preview'];
