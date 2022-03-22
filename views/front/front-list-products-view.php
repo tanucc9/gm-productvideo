@@ -6,7 +6,9 @@
     <div class="gm_pv_container_products">
         <?php if(isset($products) && count($products) > 0) {
             foreach ($products as $product) {
-                $embedCodeYT = explode("https://www.youtube.com/embed/", $product->url_video)[1];
+
+                $splittedUrl = explode("/", $product->url_video);
+                $embedCodeYT = $splittedUrl[count($splittedUrl) - 1];
             ?>
                 <div class="gm_pv_product" id="product_<?php echo $product->id ?>" data-id-product="<?php echo $product->id ?>">
                     <div class="gm_pv_container_video" id="gm_pv_container_video_<?php echo $product->id ?>">

@@ -9,7 +9,9 @@ function validateFields(event) {
 
     const isValidUrlVideo = validateUrlVideo();
     if (!isValidUrlVideo)
-        alertMessage += "The format of the url video has to be as the following: https://www.youtube.com/embed/jkjh \n";
+        alertMessage += "The format of the url video has to be one of the following: https://youtu.be/8VLTQUVCxbE\n" +
+            "https://www.youtube.com/shorts/8VLTQUVCxbE\n" +
+            "https://www.youtube.com/embed/5gxtRPyW4n0  \n";
 
     if (isValidUrlVideo)
         jQuery("#product_form").submit();
@@ -21,7 +23,12 @@ function validateUrlVideo() {
     const urlVideo = jQuery("#url_video");
 
     if (typeof urlVideo !== 'undefined') {
-        const patternUrlVideo = /^https:\/\/www\.youtube\.com\/embed\/[^\n \/]+$/;
+
+        // Examples string accepted by regex
+        //https://youtu.be/8VLTQUVCxbE
+        //https://www.youtube.com/shorts/8VLTQUVCxbE
+        //https://www.youtube.com/embed/5gxtRPyW4n0
+        const patternUrlVideo = /^(https:\/\/www\.youtube\.com\/embed\/|https:\/\/www\.youtube\.com\/shorts\/|https:\/\/youtu.be\/)[^\n \/]+$/;
         if (patternUrlVideo.test(urlVideo.val())) {
             urlVideo.css("borderColor", "green");
             return true;
