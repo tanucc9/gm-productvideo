@@ -36,3 +36,9 @@ Examples:
 ```
 [gm_pv_show_products type=newest]
 ```
+### Hooks
+#### gm_pv_edit_static_content
+```
+$extraContent = apply_filters("gm_pv_edit_static_content", $extraContent);
+```
+This hook is in the class GMProductVideo\Shortcodes\FrontShowProducts. It is possible to edit the static content below the products.
