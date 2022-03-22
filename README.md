@@ -36,6 +36,14 @@ Examples:
 ```
 [gm_pv_show_products type=newest]
 ```
+Another param that you can pass is num_products where you can specify the number of products that you want to show.
+Example:
+```
+[gm_pv_show_products type=newest num_products=5]
+```
+```
+[gm_pv_show_products type=most_liked num_products=9]
+```
 ### Hooks
 #### gm_pv_edit_static_content
 ```
