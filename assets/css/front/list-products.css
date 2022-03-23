@@ -156,6 +156,14 @@
     .gm_pv_product {
         width: 48%;
     }
+
+    .gm_pv_preview_video img {
+        height: 50px;
+    }
+
+    .gm_pv_container_video_ios {
+        height: 70vw;
+    }
 }
 
 @media (max-width: 767px) {

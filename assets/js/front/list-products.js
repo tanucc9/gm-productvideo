@@ -42,4 +42,20 @@ jQuery(document).ready(function() {
 
         }
     });
+
+    if (iOS())
+        jQuery(".gm_pv_container_video").addClass('gm_pv_container_video_ios');
 });
+
+function iOS() {
+    return [
+            'iPad Simulator',
+            'iPhone Simulator',
+            'iPod Simulator',
+            'iPad',
+            'iPhone',
+            'iPod'
+        ].includes(navigator.platform)
+        // iPad on iOS 13 detection
+        || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+}
