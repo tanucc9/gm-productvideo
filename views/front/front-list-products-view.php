@@ -48,8 +48,6 @@
     </div>
 </div>
 
-<script type="application/javascript" src="<?php echo get_site_url(null, 'wp-content/plugins/gm-productvideo/assets/js/front/lazy-load-video-yt.js') ?>"></script>
-
 <?php
 include(GM_PV__PLUGIN_DIR . 'views/parts/pagination.php');
 ?>

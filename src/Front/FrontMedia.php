@@ -25,6 +25,11 @@ class FrontMedia
             'localize_script' => true,
             'in_footer' => false,
         ],
+        '/wp-content/plugins/gm-productvideo/assets/js/front/lazy-load-video-yt.js' => [
+            'name' => 'lazy-load-video-yt',
+            'localize_script' => false,
+            'in_footer' => false,
+        ],
     ];
 
     public function __construct()
