@@ -12,7 +12,14 @@
             ?>
                 <div class="gm_pv_product" id="product_<?php echo $product->id ?>" data-id-product="<?php echo $product->id ?>">
                     <div class="gm_pv_container_video" id="gm_pv_container_video_<?php echo $product->id ?>">
-                        <div class="gm_pv_video" id="gm_pv_video_<?php echo $product->id ?>"></div>
+                        <?php
+                            $id_prod_video = 'gm_pv_video_';
+                            if (isset($nameCategory)) {
+                                $id_prod_video .= str_replace(' ', '', $nameCategory) . '_';
+                            }
+                            $id_prod_video .= $product->id;
+                        ?>
+                        <div class="gm_pv_video" id="<?php echo $id_prod_video ?>"></div>
                         <div class="gm_pv_preview_video" data-embed-code="<?php echo $embedCodeYT ?>">
                             <img src="<?php echo get_site_url() ?>/wp-content/plugins/gm-productvideo/assets/img/player-start.png" />
                         </div>
@@ -47,6 +54,7 @@
         <?php } ?>
     </div>
 </div>
+
 
 <?php
 include(GM_PV__PLUGIN_DIR . 'views/parts/pagination.php');
