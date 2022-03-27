@@ -2,8 +2,8 @@ jQuery(document).ready(function() {
     jQuery('.gm_pv_count_likes_container').on('click', function() {
         let likeElem = jQuery(this);
         if (likeElem.attr('data-status') === 'not_clicked') {
+            likeElem.attr('data-status', 'clicked');
             const idProd = likeElem.parents('.gm_pv_product').attr('data-id-product');
-
 
             jQuery.ajax({
                 url: ajaxurl.ajaxurl,
@@ -14,10 +14,8 @@ jQuery(document).ready(function() {
                     idProd: idProd,
                 },
                 success: function(result) {
-                    console.log(result);
 
                     if (result.res) {
-                        likeElem.attr('data-status', 'checked');
                         likeElem.find('span').css('color', '#0c71c3');
                         const newCountLikes = parseInt(likeElem.find('.gm_pv_count_likes').text()) + 1;
                         likeElem.find('.gm_pv_text_count_likes.desktop p').text('Piaciuto! | ' + newCountLikes);
