@@ -1,10 +1,10 @@
 # gm-productvideo
-### Introduction
+## Introduction
 This WordPress plugin has been developed to show a list of products with a video instead of an image. For the moment, it supports only videos from youtube.
 Is possible to manage the products and the categories on the back office from the 'GM Products' tab and to show the lists on the front office putting the shortcodes whatever you want.
 There is the possibility to like the products too.
 Tested on WordPress 5.6.2.
-### Installation
+## Installation
 1. download plugin from Github
 2. extract the content on your pc
 3. Rename the folder in gm-productvideo
@@ -13,7 +13,7 @@ Tested on WordPress 5.6.2.
 Now you should have the vendor directory too
 6. Create an archive zip
 7. Load it from the back office in the plugin section
-### Shortcodes
+## Shortcodes
 ##### gm_pv_showcategory
 Show the products of a specific category. The param to pass is id_category.
 Example:
@@ -44,7 +44,7 @@ Example:
 ```
 [gm_pv_show_products type=most_liked num_products=9]
 ```
-### Hooks
+## Hooks
 #### gm_pv_edit_static_content
 ```
 $extraContent = apply_filters("gm_pv_edit_static_content", $extraContent);
