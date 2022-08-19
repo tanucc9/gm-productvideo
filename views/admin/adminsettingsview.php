@@ -31,6 +31,18 @@ include(GM_PV__PLUGIN_DIR . 'views/parts/alert.php');
                     id="gm_pv_title_newest_prod"/>
         </label>
 
+        <label>Starting likes
+            <input
+                    type="number"
+                    name="num_starting_likes"
+                <?php if (isset($numStartingLikes)) { ?>
+                    value = "<?php echo $numStartingLikes; ?>"
+                <?php } else { ?>
+                    value="0"
+                <?php } ?>
+                    id="gm_pv_num_starting_likes"/>
+        </label>
+
         <label>Show static description product
             <input
                     type="checkbox"

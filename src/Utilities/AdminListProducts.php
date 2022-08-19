@@ -44,7 +44,8 @@ class AdminListProducts extends CustomAdminListTable
                 $this->items[] = [
                     'id' => $prod->id,
                     'title_product' => $prod->title_product,
-                    'url_video' => $prod->url_video
+                    'url_video' => $prod->url_video,
+                    'count_likes' => $prod->count_likes
                 ];
             }
 
@@ -61,7 +62,8 @@ class AdminListProducts extends CustomAdminListTable
             'cb' => '',
             'id' => 'ID',
             'title_product' => 'Name',
-            'url_video'    => 'URL Video'
+            'url_video'    => 'URL Video',
+            'count_likes' => 'Likes'
         );
 
         return $columns;
@@ -73,6 +75,7 @@ class AdminListProducts extends CustomAdminListTable
             case 'id':
             case 'title_product':
             case 'url_video':
+            case 'count_likes':
                 return $item[$column_name];
             default:
                 return print_r($item, true) ; //Show the whole array for troubleshooting purposes
@@ -85,6 +88,7 @@ class AdminListProducts extends CustomAdminListTable
             'id' => array('id_product', false),
             'title_product'  => array('title_product', false),
             'url_video' => array('url_video', false),
+            'count_likes' => array('count_likes', false),
         );
 
         return $sortable_columns;

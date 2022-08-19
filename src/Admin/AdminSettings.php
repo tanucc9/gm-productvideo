@@ -15,6 +15,7 @@ class AdminSettings
     public static $optionUrlInsta = 'gm_pv_url_insta';
     public static $optionTitleMostLikedProd = 'gm_pv_title_most_liked_prod';
     public static $optionTitleNewestProd = 'gm_pv_title_newest_prod';
+    public static $optionStartingLikes = 'gm_pv_starting_likes';
 
     public function __construct()
     {
@@ -49,6 +50,7 @@ class AdminSettings
         $urlFb = get_option(self::$optionUrlFb);
         $titleMostLiked = get_option(self::$optionTitleMostLikedProd);
         $titleNewestProd = get_option(self::$optionTitleNewestProd);
+        $numStartingLikes = get_option(self::$optionStartingLikes);
         
         $titleHeader = 'Settings GM Products';
         $textSubmitBtn = 'Save';

@@ -2,6 +2,7 @@
 
 namespace GMProductVideo\Controller;
 
+use GMProductVideo\Admin\AdminSettings;
 use GMProductVideo\Model\CategoryProduct;
 use GMProductVideo\Model\Product;
 
@@ -33,6 +34,12 @@ class AddProductController
         $prodObj = new Product();
         $prodObj->title_product = $titleProd;
         $prodObj->url_video = $urlVideo;
+        $numStartingLikes = get_option(AdminSettings::$optionStartingLikes);
+        if ($numStartingLikes !== false) {
+            $prodObj->count_likes = $numStartingLikes;
+        } else {
+            $prodObj->count_likes = 0;
+        }
 
         if (($idProd = Product::addProduct($prodObj)) !== false && !$hasError) {
             if (!empty($categories)) {

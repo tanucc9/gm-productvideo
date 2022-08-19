@@ -60,6 +60,7 @@ class Product
         $data = [
             'title_product' => $prod->title_product,
             'url_video' => $prod->url_video,
+            'count_likes' => $prod->count_likes
         ];
 
         if ($wpdb->insert($table, $data)) {
