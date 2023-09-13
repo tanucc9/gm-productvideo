@@ -3,7 +3,6 @@
 This WordPress plugin has been developed to show a list of products with a video instead of an image. For the moment, it supports only videos from youtube.
 Is possible to manage the products and the categories on the back office from the 'GM Products' tab and to show the lists on the front office putting the shortcodes whatever you want.
 There is the possibility to like the products too.
-Tested on WordPress 5.6.2.
 ## Installation
 1. download plugin from Github
 2. extract the content on your pc
@@ -50,3 +49,6 @@ Example:
 $extraContent = apply_filters("gm_pv_edit_static_content", $extraContent);
 ```
 This hook is in the class GMProductVideo\Shortcodes\FrontShowProducts. It is possible to edit the static content below the products.
+
+## Compatibility
+The plugin was tested on WordPress 5.6.2.
