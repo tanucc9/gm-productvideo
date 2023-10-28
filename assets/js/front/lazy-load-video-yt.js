@@ -1,5 +1,4 @@
 jQuery(document).ready(function() {
-   isPluginUsedOnPage();
    var tag = document.createElement('script');
 
    tag.src = "https://www.youtube.com/iframe_api";
@@ -31,10 +30,6 @@ jQuery(document).ready(function() {
       currentIconStartPlayer = jQuery(this);
       jQuery(this).hide();
    });
-
-   function isPluginUsedOnPage() {
-      console.log(jQuery('.gm_pv_container_list_products'));
-   }
 
    function onPlayerReady(event) {
       event.target.playVideo();

@@ -5,7 +5,7 @@
 
 .gm_pv_container_products {
     display: flex;
-    justify-content: space-between;
+    gap: 5%;
     flex-wrap: wrap;
 }
 
@@ -87,6 +87,10 @@
     opacity: 0;
 }
 */
+
+.gm_pv_pagination {
+    padding: 15px 0 0px 1em!important;
+}
 
 .gm_pv_description p {
     width: auto;
