@@ -51,4 +51,4 @@ $extraContent = apply_filters("gm_pv_edit_static_content", $extraContent);
 This hook is in the class GMProductVideo\Shortcodes\FrontShowProducts. It is possible to edit the static content below the products.
 
 ## Compatibility
-The plugin was tested on WordPress 5.6.2.
+The plugin was tested on WordPress ```5.6.2``` and ```6.3.2```.
