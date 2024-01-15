@@ -59,6 +59,8 @@ class FrontMedia
      */
     public function loadGeneralsScripts()
     {
+        wp_enqueue_script('jquery');
+        
         foreach ($this->specificScripts as $path => $script) {
             wp_register_script($script['name'], $path, [], false, $script['in_footer']);
             wp_enqueue_script($script['name']);
