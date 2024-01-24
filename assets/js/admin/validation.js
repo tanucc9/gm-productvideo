@@ -11,6 +11,7 @@ function validateFields(event) {
     if (!isValidUrlVideo)
         alertMessage += "The format of the url video has to be one of the following: https://youtu.be/8VLTQUVCxbE\n" +
             "https://www.youtube.com/shorts/8VLTQUVCxbE\n" +
+            "https://youtube.com/shorts/8VLTQUVCxbE\n" +
             "https://www.youtube.com/embed/5gxtRPyW4n0  \n";
 
     if (isValidUrlVideo)
@@ -27,8 +28,9 @@ function validateUrlVideo() {
         // Examples string accepted by regex
         //https://youtu.be/8VLTQUVCxbE
         //https://www.youtube.com/shorts/8VLTQUVCxbE
+        //https://youtube.com/shorts/8VLTQUVCxbE
         //https://www.youtube.com/embed/5gxtRPyW4n0
-        const patternUrlVideo = /^(https:\/\/www\.youtube\.com\/embed\/|https:\/\/www\.youtube\.com\/shorts\/|https:\/\/youtu.be\/)[^\n \/]+$/;
+        const patternUrlVideo = /^(https:\/\/www\.youtube\.com\/embed\/|https:\/\/www\.youtube\.com\/shorts\/|https:\/\/youtube\.com\/shorts\/|https:\/\/youtu.be\/)[^\n \/]+$/;
         if (patternUrlVideo.test(urlVideo.val())) {
             urlVideo.css("borderColor", "green");
             return true;
